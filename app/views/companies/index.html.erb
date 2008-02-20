@@ -1,0 +1,6 @@
+<h3>Company</h3>
+<% for company in @companies %>
+	<%= company.name %><br />
+<% end %>
+
+<%= link_to "Add", :action => "new" %>
