@@ -1,0 +1,11 @@
+<h2>User Information</h2>
+
+<p>Name: <b><%= @user.name -%></b></p>
+
+<p>Email: <%= @user.email -%></p>
+
+<p>Company: <%= @user.company_id %></p>
+
+<%= link_to_remote "Update Password", :url => {:action => "password_change", :id => @user }, :update => "password_change" %>
+
+<div id="password_change"></div>

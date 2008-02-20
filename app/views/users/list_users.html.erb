@@ -1,0 +1,16 @@
+<h2>Manage Users</h2>
+<p>Here you can manage what users have access to your companies resources.</p>
+
+<h3>Current Users</h3>
+<p>
+	<% if @users.empty? %>
+		There are no existing users at this time.
+	<% else %>
+		<% for user in @users -%>
+			<%= link_to user.name, :action => "show_user", :id => user -%>
+			(<%= show_company_name_for_id(user.company_id)%>)<br />
+		<% end -%>
+	<% end -%>
+</p>
+
+<p><%= link_to "Add User", :action => "add" %></p>
