@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   before_filter :authenticate, :except => [ :index, :logout]
 
     def index
-      @title = "US Digital Online: Intranet"
       # Checks to see if user is already logged in, if so, it redirets them away from login page.
       if session[:user_id]
-        redirect_to :controller => "sitesurveys"
+        redirect_to :controller => "index"
       else
         # Checks to see if user has already submitted username and password, if so, will attempt to log them in.
         if request.post? and params[:user]

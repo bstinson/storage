@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   belongs_to :company
-  
+  has_many :notes  
   # Creates a temporary variable that can be used when changing a user's password.
   attr_accessor :current_password
   

@@ -9,10 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 6) do
+
+  create_table "buildings", :force => true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.string   "note"
+    t.integer  "unit_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +41,23 @@ ActiveRecord::Schema.define(:version => 3) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "units", :force => true do |t|
+    t.integer  "unit_num"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "monthly_price"
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "alt_phone"
+    t.string   "auth_users"
+    t.string   "code"
+    t.string   "status"
+    t.integer  "building_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

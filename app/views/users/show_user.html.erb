@@ -4,8 +4,8 @@
 
 <p>Email: <%= @user.email -%></p>
 
-<p>Company: <%= @user.company_id %></p>
+<p>Company: <%= show_company_name_for_id(@user.company_id) %></p>
 
-<%= link_to_remote "Update Password", :url => {:action => "password_change", :id => @user }, :update => "password_change" %>
+<%= link_to_remote "Update Password", :url => {:action => "password_change", :id => @user }, :update => "password_change", :complete => visual_effect(:highlight, "password_change", :duration => 5) %>
 
 <div id="password_change"></div>

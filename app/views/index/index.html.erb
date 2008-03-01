@@ -1,6 +1,56 @@
 <div id="divide"></div>
 
 <div id="content">
+	
+	<% if flash[:notice].nil? %>
+		<% else %>
+	<div id="helper">
+		<%= textilize(flash[:notice])%>
+	</div>
+	<% end %>
+	<div id="shed_status">
+		<% if @buildings.nil? %>
+			<p>You currently have no buildings for your company!</p>
+		<% else %>
+			<h3>Buildings</h3>
+			<%= collection_select :form, :id, @buildings, :id, :name,
+			                      {},
+			                      {:onChange => remote_function(:update => "unit_status", :url => { :action => :update_building },
+																						  :with => "'building_id=' + value") } %>
+		<% end %>
 
-
+		<div id="unit_status">
+			<div style="width:350px;background-color:#ccc;padding:10px;">
+				
+				<% %>
+				<table>
+					<caption><b>Daily Stats</b></caption>
+					<tr>
+						<td>Total Units:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Vacancies:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> Occupied Units:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> Needing Cleaning:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> Damaged:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> Locked Out:</td>
+						<td></td>
+					</tr>
+			</div>
+		</div>	
+	</div>
+	
 </div>
