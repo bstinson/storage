@@ -165,3 +165,29 @@ img{
 	border:1px solid #ccc;
 	padding:5px;
 }
+
+/* Unit Statuses */
+
+a.Vacant {
+	color:gray;
+}
+
+a.Unclean{
+	color:blue;
+}
+
+a.Late{
+	color:yellow;
+}
+
+a.Damage{
+	color:black;
+}
+
+a.Locked{
+	color:red;
+}
+
+a.System{
+	color:#E83;
+}

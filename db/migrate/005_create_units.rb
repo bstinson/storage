@@ -6,12 +6,18 @@ class CreateUnits < ActiveRecord::Migration
       t.integer :height
       t.integer :monthly_price
       t.string :name
+      t.string :ssn
       t.string :address
+      t.string :city
+      t.string :state
+      t.string :zip
       t.string :phone
+      t.string :email
+      t.string :work_cell
+      t.string :alt_contact
       t.string :alt_phone
       t.string :auth_users
       t.string :code
-      t.string :phone
       t.string :status
       t.integer :building_id, :null => 'false'
 

@@ -1,9 +1,9 @@
 <h3><%= @building.name %></h3>
 
 <% if @units.size == 0 %>
-	<p>There are no units currently at this building.</p>
+	<p>There are no units currently at this building. Click <%= link_to "here", :controller => "units" %> to add a unit.</p>
 	<% else %>
 	<% for unit in @units %>
-		<%= link_to unit.unit_num, :action => "view_unit", :id => unit.id %>
+		<%= link_to unit.unit_num, {:action => "view_unit", :id => unit.id}, :class => unit.status %><br />
 	<% end %>
 <% end %>

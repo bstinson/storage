@@ -12,8 +12,16 @@
 	
 	<div id="info">
 		<h3>Unit #<%= @unit.unit_num %></h3>
-		
-	      Status: 
-
+			
+			<% if @unit.status == 'Vacant'%>
+				<p>This unit is vacant. If you want to add a customer to this unit, click <%= link_to "here!", :action => "add_customer", :id => @unit.id %></p>
+			<% else %>
+				<%= render :partial => "customer_info" %>
+			<% end %>
+			
+			<% if @unit.status = 'Vacant' %>
+			<% else %>
+				<%= render :partial => "notes" %>
+			<% end %>
 	</div>	
 </div>	

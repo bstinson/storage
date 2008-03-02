@@ -9,7 +9,7 @@ class IndexController < ApplicationController
     @companies = Company.find(:all)
     flash[:notice] = "Welcome to your application's home page! This is where you can get a quick view of what sheds our open for your buildings, or get links to further actions that you can take. Enjoi."
     @buildings = Building.find_all_by_company_id(@company_id, :order => 'name ASC')
-    @units = Unit.find_all_by_id(@company_id.id)
+    @units = Unit.find_all_by_id(@company_id.id, :order => 'unit_num ASC')
     @vacant_units = Unit.find_all_by_id_and_status(@company_id.id, 'Vacant')
     @occupied_units = Unit.find_all_by_id_and_status(@company_id.id, 'Occupied')
     @unclean_units = Unit.find_all_by_id_and_status(@company_id.id, 'Needs Cleaning')
@@ -33,5 +33,21 @@ class IndexController < ApplicationController
     flash[:notice] = "Here is where you can view information on a unit, and also update its information."
     @buildings = Building.find_all_by_company_id(@user.company_id)
     @unit = Unit.find_by_id(params[:id])
+  end
+  
+  def add_customer
+    @user = User.find_by_id(session[:user_id])
+    @companies = Company.find(:all)
+    @company_id = User.find_by_id(@user.company_id)
+    @unit = Unit.find(params[:id])
+    flash[:notice] = "Here is where you can add a customer to a unit."
+    if request.post? and params[:unit]
+        if @unit.update_attributes(params[:unit])
+          flash[:notice] = "Customer Added!"
+          redirect_to :action => "view_unit", :id => @unit
+        end
+      else
+        @unit = Unit.find_by_id(params[:id])
+    end
   end
 end
