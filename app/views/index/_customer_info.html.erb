@@ -1,0 +1,32 @@
+<table cellpadding="5">
+	<tr>
+		<td class="label">Status:</td>
+		<td id="status"><%= @unit.status%></td>
+	</tr>
+
+	<tr>
+		<td class="label">Name:</td>
+		<td><%= @unit.name %></td>
+	</tr>
+
+	<%= if_empty("SSN", @unit.ssn)%>
+
+	<tr>
+		<td  class="label">Address:</td>
+		<td><%= format_address(@unit.address, @unit.city,@unit.state, @unit.zip) %></td>
+	</tr>
+	
+	<tr>
+		<td class="label">Phone:</td>
+		<td><%= @unit.phone %></td>
+	</tr>
+
+	<%= if_empty("Work/Cell", @unit.work_cell)%>
+	<%= if_empty("Email", @unit.email)%>
+	<%= if_empty("(alt) Contact", @unit.alt_contact) %>
+	<%= if_empty("Contact Phone", @unit.alt_phone) %>	
+	<%= if_empty("Auth. Users", @unit.auth_users)%>
+	<%= if_empty("Monthly Price", @unit.monthly_price.to_s)%>
+	<%= if_empty("Code", @unit.code)%>
+
+</table>

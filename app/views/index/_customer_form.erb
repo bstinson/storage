@@ -1,0 +1,47 @@
+<% form_for :unit do |form| %>
+	
+	<label for="unit_name">Name:</label><br />
+	<%= form.text_field :name %><br /><br />
+
+	<label for="unit_ssn">SSN:</label><br />
+	<%= form.text_field :ssn %><br /><br />
+	
+	<label for="unit_address">Address:</label><br />
+	<%= form.text_field :address %><br /><br />
+	
+	<label for="unit_city">City:</label><br />
+	<%= form.text_field :city %><br /><br />
+	
+	<label for="unit_state">State:</label><br />
+	<%= form.text_field :state %><br /><br />
+	
+	<label for="unit_zip">Zip Code:</label><br />
+	<%= form.text_field :zip %><br /><br />
+	
+	<label for="unit_phone">Phone Number:</label><br />
+	<%= form.text_field :phone %><br /><br />
+	
+	<label for="unit_work_cell">Work/Cell:</label><br />
+	<%= form.text_field :work_cell %><br /><br />
+
+	<label for="unit_monthly_email">Email:</label><br />
+	<%= form.text_field :email %><br /><br />
+	
+	<label for="unit_alt_contact">(alt) Contact:</label><br />
+	<%= form.text_field :alt_contact %><br /><br />
+	
+	<label for="unit_alt_phone">Contact Phone:</label><br />
+	<%= form.text_field :alt_phone %><br /><br />
+	
+	<label for="unit_auth_users">Auth. Users:</label><br />
+	<%= form.text_field :auth_users %><br /><br />
+
+	<label for="unit_monthly_price">Monthly Price:</label><br />
+	<%= form.text_field :monthly_price %><br /><br />
+	
+	<label for="unit_code">Code:</label><br />
+	<%= form.text_field :code %><br /><br />			
+	<%= form.hidden_field :status, :value => 'Occupied' %>
+	
+	<%= submit_tag "Add", :class => "submit"%>
+<% end %>	
