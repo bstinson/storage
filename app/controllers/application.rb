@@ -8,5 +8,4 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery  :secret => 'e90370adcf3a6692a7e3f80dfd58c570'
   
-
 end

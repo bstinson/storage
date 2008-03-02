@@ -6,28 +6,10 @@ module ApplicationHelper
   end
   
   def if_current_company(id, name)
-    if id == @user.company_id.to_i
-  		  link_to name, {:controller => 'index'}, :style => 'color:#FFF;background-color:#7B4;text-decoration:none;'
+    if id == @company_id.id.to_i
+  		  link_to name, {:controller => 'index', :company_id => id}, :style => 'color:#FFF;background-color:#7B4;text-decoration:none;'
   		else
-  		  link_to name, :controller => 'index'
+  		  link_to name, :controller => 'index', :company_id => id 
     end    
   end
-  
-  def in_place_select_editor(field_id, options = {})
-
-    function = "new Ajax.InPlaceSelectEditor("
-    function << "'#{field_id}', "
-    function << "'#{url_for(options[:url])}'"
-    function << (', ' + options_for_javascript(
-      {
-        'selectOptionsHTML' =>
-            %('#{escape_javascript(options[:select_options].gsub(/\n/, ""))}')
-      }
-      )
-    ) if options[:select_options]
-         function << ')'
-    javascript_tag(function)
-
-  end
-
 end

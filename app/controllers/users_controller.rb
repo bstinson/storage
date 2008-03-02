@@ -2,9 +2,10 @@ class UsersController < ApplicationController
   before_filter :authenticate, :except => [ :index, :logout]
 
     def index
-      # Checks to see if user is already logged in, if so, it redirets them away from login page.
+      # Checks to see if user is already logged in, if so, it redirects them away from login page.
       if session[:user_id]
-        redirect_to :controller => "index"
+        @user = User.find_by_id(session[:user_id])
+        redirect_to :controller => "index", :action => "index", :company_id => @user.company_id
       else
         # Checks to see if user has already submitted username and password, if so, will attempt to log them in.
         if request.post? and params[:user]
@@ -12,8 +13,8 @@ class UsersController < ApplicationController
           user = User.find_by_name_and_password(@user.name,@user.password)
           if user
             session[:user_id] = user.id
-            # flash[:notice] = "User logged in!"
-            redirect_to :controller => "index"
+            @user = User.find_by_id(session[:user_id])
+            redirect_to :controller => "index", :action => "index", :company_id => @user.company_id
           else
             #Don't show the password in the view
             @user.password = nil
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
 
     def logout
       session[:user_id] = nil
-      redirect_to :action => "index", :controller => "users"
+      redirect_to :controller => "users"
     end
 
   # Controllers for user account administration.

@@ -15,7 +15,7 @@
 			<div id="logout">Logged in as <%= @user.name.capitalize %> (<%= link_to "Logout", :controller => "users", :action =>"logout", :class => "logout" %>)</div>
 		<% end -%>
 
-		<h2><%= link_to_unless_current "Storage Units", :controller => "index" %></h2>
+		<h2><%= link_to_unless_current "Storage Units", :action => "index", :company_id => @company_id.id %></h2>
 		<div id="topbarlinks">
 			<% for company in @companies %>
 				<%= if_current_company(company.id, company.name) %>

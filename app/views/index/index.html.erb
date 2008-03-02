@@ -8,11 +8,12 @@
 		<%= textilize(flash[:notice])%>
 	</div>
 	<% end %>
+		
 	<div id="shed_status">
-		<% if @buildings.nil? %>
-			<p>You currently have no buildings for your company!</p>
+		<h3>Buildings</h3>
+		<% if @buildings.size == 0 %>
+		<p> You have no buildings for your company. Click <%= link_to "here", :controller => "buildings" %> to add them.</p>
 		<% else %>
-			<h3>Buildings</h3>
 			<%= collection_select :form, :id, @buildings, :id, :name,
 			                      {},
 			                      {:onChange => remote_function(:update => "unit_status", :url => { :action => :update_building },
