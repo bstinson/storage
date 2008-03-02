@@ -23,32 +23,31 @@
 		<div id="unit_status">
 			<div style="width:350px;background-color:#ccc;padding:10px;">
 				
-				<% %>
 				<table>
 					<caption><b>Daily Stats</b></caption>
 					<tr>
 						<td>Total Units:</td>
-						<td></td>
+						<td><%= @units.size %></td>
 					</tr>
 					<tr>
 						<td>Vacancies:</td>
-						<td></td>
+						<td><%= @vacant_units.size %></td>
 					</tr>
 					<tr>
 						<td> Occupied Units:</td>
-						<td></td>
+						<td><%= @units.size - @vacant_units.size %></td>
 					</tr>
 					<tr>
 						<td> Needing Cleaning:</td>
-						<td></td>
+						<td><%= @unclean_units.size %></td>
 					</tr>
 					<tr>
 						<td> Damaged:</td>
-						<td></td>
+						<td><%= @damaged_units.size %></td>
 					</tr>
 					<tr>
 						<td> Locked Out:</td>
-						<td></td>
+						<td><%= @locked_units.size %></td>
 					</tr>
 			</div>
 		</div>	
