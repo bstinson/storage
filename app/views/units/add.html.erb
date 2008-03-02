@@ -1,0 +1,37 @@
+<div id="divide">
+	<div>
+		<%= link_to "Cancel", :action => 'index'%>
+	</div>
+</div>
+
+<div id="content">
+
+	<% if flash[:notice].nil? %>
+	<% else %>	
+		<div id="helper">
+			<%=	textilize(flash[:notice]) %>
+		</div>	
+	<% end %>
+
+<h3>Add Unit</h3>
+
+<% form_for :unit do |form| %>
+
+	<label for="unit_unit_num">Unit #</label><br />
+	<%= form.text_field :unit_num %><br />
+	
+	<label for="unit_width">Size:</label><br />
+	<%= form.text_field :width, :size => "5"%> x <%= form.text_field :height, :size => "5" %><br />
+	
+	<label for="unit_building_id">Building:<br />
+	<%= form.collection_select( :building_id, @buildings, :id, :name) %><br />
+	
+	<%= form.hidden_field :status, :value => 'Vacant'%>
+
+	<br /><%= submit_tag "Submit"%>
+	
+<% end %>
+
+
+
+</div>

@@ -1,0 +1,30 @@
+<div id="divide">
+	<div>
+		<%= link_to "Add Unit", :action => 'add'%>
+	</div>
+</div>
+
+<div id="content">
+
+	<% if flash[:notice].nil? %>
+	<% else %>	
+		<div id="helper">
+			<%=	textilize(flash[:notice]) %>
+		</div>	
+	<% end %>
+
+<h3>Units </h3>
+<% for building in @buildings %>
+	<h4><%= building.name %></h4>
+	<% find_units_for_building(building.id) %>
+
+	<% if @units.size == 0 %>
+		<p>There are no units for this building yet.</p>
+		<% else %>		
+			<% for unit in @units %>
+				<%= link_to unit.unit_num %> (<%= unit.status%>)<br />
+			<% end %>	
+	<% end %>
+<% end %>
+
+</div>

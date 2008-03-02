@@ -1,0 +1,10 @@
+<div id="divide"></div>
+
+<div id="content">
+<% form_for :building do |form| %>
+	<%= form.hidden_field :company_id, :value => @user.company_id %>
+	Name:<br /><%= form.text_field :name %><br />
+	<%= submit_tag "Submit" %>
+<% end %> 
+
+</div>	

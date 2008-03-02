@@ -1,0 +1,14 @@
+<div id="divide"></div>
+
+<div id="content">
+	
+	<h2>Buildings</h2>
+	
+	<% if @buildings.size == 0%>
+		<p>There are no buildings to be viewed.</p>
+	<% else %>
+		<%= render :partial => "building", :collection => @buildings %>
+	<% end %>
+	
+	<%= link_to "Add", :action => 'add' %>
+</div>	

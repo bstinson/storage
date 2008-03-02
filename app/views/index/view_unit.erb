@@ -1,0 +1,19 @@
+<div id="divide">
+
+</div>
+
+<div id="content">
+	<% if flash[:notice].nil? %>
+	<% else %>	
+		<div id="helper">
+			<%=	textilize(flash[:notice]) %>
+		</div>	
+	<% end %>
+	
+	<div id="info">
+		<h3>Unit #<%= @unit.unit_num %></h3>
+		
+	      Status: 
+
+	</div>	
+</div>	
