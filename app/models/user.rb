@@ -32,16 +32,16 @@ class User < ActiveRecord::Base
   EMAIL_SIZE = 30
   
   validates_uniqueness_of :name, :email
-  validates_length_of :name, :within => NAME_RANGE
-  validates_length_of :password, :within => PASSWORD_RANGE
-  validates_length_of :email, :maximum => EMAIL_MAX_LENGTH
+  validates_length_of     :name, :within => NAME_RANGE
+  validates_length_of     :password, :within => PASSWORD_RANGE
+  validates_length_of     :email, :maximum => EMAIL_MAX_LENGTH
   
-  validates_format_of :name,
-                      :with => /^[A-Z0-9_]*$/i,
-                      :message => "must contain only letters, " +
-                                  "numbers, and underscores"
+  validates_format_of     :name,
+                          :with => /^[A-Z0-9_]*$/i,
+                          :message => "must contain only letters, " +
+                                      "numbers, and underscores"
                                   
-  validates_format_of :email,
-                      :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-                      :messsage => "must be a valid email address"
+  validates_format_of     :email,
+                          :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+                          :messsage => "must be a valid email address"
 end

@@ -1,0 +1,85 @@
+<% form_for :unit do |form| %>
+
+	<%= error_messages_for :unit %>
+	
+	<label for="unit_status">Status:</label><br />
+	<%= form.select :status, %w{ Occupied Vacant Unclean Late Damaged}%><br /><br />
+		
+	<label for="unit_name">Name:</label><br />
+	<%= form.text_field :name,
+						:size => Unit::NAME_SIZE,
+						:maxlength => Unit::NAME_MAX_LENGTH %><br /><br />
+
+	<label for="unit_ssn">SSN:</label><br />
+	<%= form.text_field :ssn,
+						:size => Unit::SSN_SIZE,
+						:maxlength => Unit::SSN_LENGTH %><br /><br />
+	<label for="unit_ssn">Drivers License:</label><br />					
+						<%= form.text_field :dl,
+											:size => Unit::DL_SIZE,
+											:maxlength => Unit::DL_LENGTH %><br /><br />	
+	<label for="unit_address">Address:</label><br />
+	<%= form.text_field :address,
+						:size => Unit::ADDRESS_SIZE,
+						:maxlength => Unit::ADDRESS_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_city">City:</label><br />
+	<%= form.text_field :city,
+						:size => Unit::CITY_SIZE,
+						:maxlength => Unit::CITY_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_state">State:</label><br />
+	<%= form.text_field :state,
+						:size => Unit::STATE_SIZE,
+						:maxlength => Unit::STATE_LENGTH %><br /><br />
+	
+	<label for="unit_zip">Zip Code:</label><br />
+	<%= form.text_field :zip,
+						:size => Unit::ZIP_SIZE,
+						:maxlength => Unit::ZIP_LENGTH %><br /><br />
+	
+	<label for="unit_phone">Phone Number:</label><br />
+	<%= form.text_field :phone,
+						:size => Unit::PHONE_SIZE,
+						:maxlength => Unit::PHONE_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_work_cell">Work/Cell:</label><br />
+	<%= form.text_field :work_cell,
+						:size => Unit::PHONE_SIZE,
+						:maxlength => Unit::PHONE_MAX_LENGTH %><br /><br />
+
+	<label for="unit_monthly_email">Email:</label><br />
+	<%= form.text_field :email,
+						:size => Unit::EMAIL_SIZE,
+						:maxlength => Unit::EMAIL_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_alt_contact">(alt) Contact:</label><br />
+	<%= form.text_field :alt_contact,
+						:size => Unit::NAME_SIZE,
+						:maxlength => Unit::NAME_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_alt_phone">Contact Phone:</label><br />
+	<%= form.text_field :alt_phone,
+						:size => Unit::PHONE_SIZE,
+						:maxlength => Unit::PHONE_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_auth_users">Auth. Users:</label><br />
+	<%= form.text_field :auth_users,
+						:size => Unit::AUTH_USERS_SIZE %><br /><br />
+
+	<label for="unit_monthly_price">Monthly Price ($):</label><br />
+	<%= form.text_field :monthly_price,
+						:size => Unit::PRICE_SIZE,
+						:maxlength => Unit::PRICE_MAX_LENGTH %><br /><br />
+	
+	<label for="unit_code">Code:</label><br />
+	<%= form.text_field :code,
+						:size => Unit::CODE_SIZE,
+						:maxlength => Unit::CODE_LENGTH %><br /><br />
+									
+	<%= form.hidden_field :status, :value => 'Occupied' %>
+	
+	<%= submit_tag "Submit", :class => "submit" %> <%= link_to "Cancel", :action => "view_unit", :id => @unit.id %>
+	
+	
+	<% end %>	

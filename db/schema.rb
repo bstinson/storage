@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "monthly_price"
     t.string   "name"
     t.string   "ssn"
+    t.string   "dl"
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.string   "code"
     t.string   "status"
     t.integer  "building_id"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

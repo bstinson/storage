@@ -12,4 +12,13 @@ module ApplicationHelper
   		  link_to name, :controller => 'index', :company_id => id 
     end    
   end
+  
+  def format_date(date)
+     h date.strftime("%b %d, %Y")
+  end
+  
+  def show_name_for_id(id)
+    @user_for_note = User.find_by_id(id)
+    @user_for_note.name.capitalize
+  end
 end

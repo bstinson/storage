@@ -3,6 +3,17 @@
 <% form_for :company do |form| %>
 	Name<br />
 	<%= form.text_field :name %><br />
+	Address<br />
+	<%= form.text_field :address %><br />
+	City<br />
+	<%= form.text_field :city %><br />
+	State<br />
+	<%= form.text_field :state %><br />
+	Zip Code<br />
+	<%= form.text_field :zip %><br />
+	Phone Number<br />
+	<%= form.text_field :phone %><br />
+	
 	
 	<%= submit_tag "Submit"%>
 <% end %>

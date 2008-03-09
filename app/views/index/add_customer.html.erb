@@ -1,0 +1,17 @@
+<div id="divide">
+</div>
+
+<div id="content">
+
+	<% if flash[:notice].nil? %>
+		<% else %>
+	<div id="helper">
+		<%= textilize(flash[:notice])%>
+	</div>
+	<% end %>
+	
+	<h2>Add Customer</h2>
+	
+	<%= render :partial => "add_customer_form" %>
+	
+</div>	

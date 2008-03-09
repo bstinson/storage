@@ -7,6 +7,7 @@ class CreateUnits < ActiveRecord::Migration
       t.integer :monthly_price
       t.string :name
       t.string :ssn
+      t.string :dl
       t.string :address
       t.string :city
       t.string :state
@@ -20,6 +21,7 @@ class CreateUnits < ActiveRecord::Migration
       t.string :code
       t.string :status
       t.integer :building_id, :null => 'false'
+      t.integer :company_id, :null => 'false'
 
 
 

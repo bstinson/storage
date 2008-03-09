@@ -1,6 +1,6 @@
 module IndexHelper
   def if_empty(label, value)
-    if value.nil?
+    if value == ""
     else
   	  "<tr>
   			<td class=\"label\">" + label + ":</td>

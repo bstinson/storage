@@ -1,0 +1,20 @@
+<h4>Notes <%= link_to_remote "Add",
+						:url =>{:action => 'add_note', :id => @unit },
+						:update => "add_note",
+						:style => "font-size:8.75px;"
+						 -%></h4>
+
+<div id="add_note">
+</div>
+
+
+<% if @notes_count > 0 %>
+<div id="notes">
+	<% for note in @notes %>
+		<h5>
+			<%= format_date(note.created_at) -%> (<%= show_name_for_id(note.user_id) -%>)
+		</h5>
+		<%= textilize(note.note) %>
+	<% end %>
+</div>	
+<% end %>

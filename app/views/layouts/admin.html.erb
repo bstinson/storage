@@ -15,7 +15,7 @@
 			<div id="logout">Logged in as <%= @user.name.capitalize %> (<%= link_to "Logout", :controller => "users", :action =>"logout", :class => "logout" %>)</div>
 		<% end -%>
 
-		<h2>Storage Units: Administration</h2>
+		<h2><%= link_to "Storage Units", :controller => "index" %></h2>
 
 		
 	</div>

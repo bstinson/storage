@@ -1,7 +1,4 @@
 <div id="divide">
-	<div>
-		<%= link_to "Cancel", :action => 'index'%>
-	</div>
 </div>
 
 <div id="content">
@@ -17,18 +14,27 @@
 
 <% form_for :unit do |form| %>
 
+	<%= error_messages_for :unit %>
+
 	<label for="unit_unit_num">Unit #</label><br />
-	<%= form.text_field :unit_num %><br />
+	<%= form.text_field :unit_num,
+						:size => Unit::UNIT_NUM_SIZE,
+						:maxlength => Unit::UNIT_NUM_MAX_LENGTH %><br />
 	
 	<label for="unit_width">Size:</label><br />
-	<%= form.text_field :width, :size => "5"%> x <%= form.text_field :height, :size => "5" %><br />
+	<%= form.text_field :width, :size => Unit::MEASURED_SIZE, :maxlength => Unit::MEASURED_SIZE -%> x 
+	<%= form.text_field :height, :size => Unit::MEASURED_SIZE, :maxlength => Unit::MEASURED_SIZE -%><br />
 	
 	<label for="unit_building_id">Building:<br />
 	<%= form.collection_select( :building_id, @buildings, :id, :name) %><br />
 	
 	<%= form.hidden_field :status, :value => 'Vacant'%>
+	
+	<%= form.hidden_field :company_id, :value => @user.company_id %>
+	
 
-	<br /><%= submit_tag "Submit"%>
+	<br /><%= submit_tag "Submit"%> <%= link_to "Cancel", :action => 'index'%>
+	
 	
 <% end %>
 

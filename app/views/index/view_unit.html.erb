@@ -1,0 +1,37 @@
+<div id="divide">
+	<% if @unit.status == "Vacant"%>
+	<% else%>	
+	<div>
+		<%= link_to "Edit Customer", :action => "edit_customer", :id => @unit %>
+		<%= link_to "Remove Customer", :action => "remove_customer", :id => @unit %>
+		<%= link_to "Contract", {:action => "contract", :id => @unit }, :target => "_contract"%>
+	</div>
+	<% end %>
+</div>
+
+<div id="content">
+	<% if flash[:notice].nil? %>
+	<% else %>	
+		<div id="helper">
+			<%=	textilize(flash[:notice]) %>
+		</div>	
+	<% end %>
+	
+	<% if @unit.status == 'Vacant' %>
+	<% else %>
+		<div id="note_section">
+		<%= render :partial => "notes" %>
+		</div>
+	<% end %>
+		
+	<div id="info">
+		<h3>Unit #<%= @unit.unit_num %></h3>
+			
+			<% if @unit.status == 'Vacant'%>
+				<p>This unit is vacant. If you want to add a customer to this unit, click <%= link_to "here!", :action => "add_customer", :id => @unit.id %></p>
+			<% else %>
+				<%= render :partial => "customer_info" %>
+			<% end %>
+			
+	</div>	
+</div>	

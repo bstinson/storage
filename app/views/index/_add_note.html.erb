@@ -1,0 +1,10 @@
+<% form_for :note do |form| -%>
+	<%= error_messages_for "note" %>
+
+	<label for="note_note">Note:</label><br />
+	<%= form.text_field :note %><br />
+	<%= form.hidden_field :user_id, :value => session[:user_id] %>
+	<%= form.hidden_field :unit_id, :value => @unit.id %>
+
+	<%= submit_tag "Add", :class => "submit" %>
+<% end -%>

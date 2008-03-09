@@ -15,7 +15,7 @@ img{
 	margin:0 auto;
 }
 
-#header h1{
+#header h2{
 	display:inline;
 	padding:10px;
 }
@@ -105,7 +105,7 @@ img{
 	margin-top:10px;
 }
 
-#notice{
+#notice p{
 	color:red;
 	font-weight:bold;
 	font-size:10pt;
@@ -121,22 +121,8 @@ img{
 }
 
 
-#survey_info tr{
-	vertical-align:top;
-}
-
-#survey_info td{
-	vertical-align:top;
-}
-
 .label{
 	text-align:right;
-}
-
-#survey_info a{
-	float:right;
-	margin-right:150px;
-	text-align:left;
 }
 
 #note_section{
@@ -147,7 +133,6 @@ img{
 
 #notes{
 	border:1px solid gray;
-
 	padding:10px;
 }
 
@@ -155,10 +140,6 @@ img{
 	font-size:8.75px;
 }
 
-.late_survey{
-	color:red;
-	font-weight:bold;
-}
 
 #helper {
 	background-color:#eff;
@@ -190,4 +171,16 @@ a.Locked{
 
 a.System{
 	color:#E83;
+}
+
+form fieldset{
+	color:gray;
+	border-style: solid none none none;
+}
+form legend{
+	font-weight:bold;
+	color:black;
+}
+form label{
+	color:black;
 }

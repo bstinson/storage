@@ -1,0 +1,55 @@
+<h2 style="text-align:center;"><%= @company.name %></h2>
+
+<div style="width:60%; margin: 0 auto;">
+<div>
+	<p style="float:right;"><b>SSN:</b> <%= @unit.ssn %></p>
+	<p style="float:left;"><b>Renter Name:</b> <%= @unit.name %></p>
+</div>
+
+<div style="clear:both;">
+	<p style="float:right;"><b>Phone:</b> <%= @unit.phone %></p>
+	<p style="float:left;"><b>Address:</b> <%= @unit.address %></p>
+</div>
+
+<div style="clear:both;">
+	<p style="float:right;"><b>DL#:</b> <%= @unit.dl %></p>
+	<p style="float:left;"><b>City, State, &amp; Zip:</b> <%= @unit.city + ", " + @unit.state + " " + @unit.zip %></p>
+</div>
+
+<div style="clear:both;">
+	<p style="float:right;"><b>Work/Cell:</b> <%= @unit.work_cell %></p>
+	<p style="float:left;"><b>Email Address:</b> <%= @unit.email %></p>
+</div>
+
+<div style="clear:both;">
+	<p style="float:right;"><b>Phone:</b> <%= @unit.alt_phone %></p>
+	<p style="float:left;"><b>Alternate Contact:</b> <%= @unit.alt_contact %></p>
+</div>
+</div>
+
+<div style="width:80%; margin:0 auto;">
+<p style="clear:both; padding-top:20px;">Renter agrees to pay a monthly fee of <b><%= number_to_currency(@unit.monthly_price)%></b> ("fee") under the terms and conditions stated on this agreement for Unit #<b><%= @unit.unit_num %></b>, with the size being <%= @unit.height %> x <%= @unit.width %>, for a term of _____________. Security deposit paid on _____________________ in the amount of $_______________________.</p>
+
+<p>Provisions of this agreement:</p>
+
+<ol style="list-style-type:number;">
+	<li>All fees are due on the 1st of the month. Fees should be mailed or dropped off to the address above.</li>
+	<li>A $10.00 Late Fee will be assessed if fee is not paid by the 5th of each month, unless the Owner has approved other arrangements. Owner has the right to secure unit until account has been paid to date.</li>
+	<li>Checkouts after the 6th pay a full month's fee</li>
+	<li>It is the responsibility of the Renter to report any change of address in writing to the Owner.</li>
+	<li>It is expressly understood and agreed that the Owner carries no insurance covering Renter's goods and assumes no liability for the same.</li>
+	<li><b>Renter understands owner has a lien on any goods in storage for failure to pay fees which are owed. These goods may be sold by Owner after giving Render thirty (30) days notice of the date of the sale. The notice shall be addressed to Renter at the address listed in this agreement. The method of sale shall be totally in the direction of Owner and should there be excess proceeds after all fees are paid then these fees shall be mailed to Renter at the above address.</b></li>
+	<li>Do not use rental unit for anything but dead storage. Do not store any flammable or explosive materials. Do not use any electric heater or appliance. No sanding or painting.</li>
+	<li>To vacate the unit and receive your deposit refund, remove all items and sweep out the unit. Call the telephone number above. Your deposit will be refunded as soon as the unit has been inspected.</li>
+	<li>Any items left in the unit after rental period has expired becomes the property of Owner and Owner is entitled to dispose of these items in Owner's absolute discretion.</li>
+</ol>
+	
+<p>I, <b><%= @unit.name %></b>, have read and understand this agreement in its entirety.</p>
+<div>
+<p style="float:right;"><b>Date:</b> <%= Date.today %></p>
+<p style="float:left;"><b>Renter's Signature:</b> ________________________________________ </p>
+</div>
+<div style="clear:both;">
+<p style="float:right; clear:both;"><b>Date:</b> <%= Date.today %></p>
+<p style="float:left;"><b>Accepted &amp; Received by:</b> ___________________________________ </p>
+</div>
