@@ -67,7 +67,8 @@ class IndexController < ApplicationController
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
-          flash[:notice] = "Customer Added!"
+          StatusChange.deliver_status(@unit)
+          flash[:notice] = "Customer Updated!"
           redirect_to :action => "view_unit", :id => @unit
         end
       else

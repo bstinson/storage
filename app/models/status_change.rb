@@ -16,4 +16,13 @@ class StatusChange < ActionMailer::Base
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
+  
+  def status(unit)
+    @subject    = 'Status Change'
+    @body       = {}
+    @body["unit"] = unit
+    @recipients = 'brads@usdol.net'
+    @from       = 'storage@usdol.net'
+    @sent_on    = Time.now
+  end  
 end
