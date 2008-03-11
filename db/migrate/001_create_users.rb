@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password
-      t.string :notify
       t.integer :company_id, :null => false
 
       t.timestamps
