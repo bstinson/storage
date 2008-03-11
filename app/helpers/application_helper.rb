@@ -7,9 +7,9 @@ module ApplicationHelper
   
   def if_current_company(id, name)
     if id == @company_id.id.to_i
-  		  link_to name, {:controller => 'index'}, :style => 'color:#FFF;background-color:#7B4;text-decoration:none;'
+  		  link_to truncate(name, 20, "..."), {:controller => 'index'}, :style => 'color:#FFF;background-color:#7B4;text-decoration:none;'
   		else
-  		  link_to name, :controller => 'index', :company_id => id 
+  		  link_to truncate(name, 20, "..."), :controller => 'index', :company_id => id 
     end    
   end
   

@@ -45,7 +45,7 @@ class Unit < ActiveRecord::Base
   # Actual Data Validations
   validates_presence_of :unit_num, :width, :height, :building_id, :company_id
   validates_uniqueness_of :unit_num
-# validates_length_of :unit_num, :within => 1..3, :on => :create
+  validates_numericality_of :monthly_price, :allow_nil => true
   validates_length_of :name, :within => NAME_RANGE, :allow_nil => true
   validates_length_of :address, :within => ADDRESS_RANGE, :allow_nil => true
   validates_length_of :city, :within => CITY_RANGE, :allow_nil => true

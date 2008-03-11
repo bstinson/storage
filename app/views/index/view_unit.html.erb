@@ -3,7 +3,7 @@
 	<% else%>	
 	<div>
 		<%= link_to "Edit Customer", :action => "edit_customer", :id => @unit %>
-		<%= link_to "Remove Customer", :action => "remove_customer", :id => @unit, :confirm => "This will erase all customer information for this unit. Are you sure you want to remove it?" %>
+		<%= link_to "Remove Customer", { :action => "remove_customer", :id => @unit}, :confirm => "This will erase all customer information for this unit. Are you sure you want to remove them?" %>
 		<%= link_to "Contract", {:action => "contract", :id => @unit }, :target => "_contract"%>
 	</div>
 	<% end %>

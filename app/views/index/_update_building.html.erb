@@ -1,9 +1,29 @@
-<h3><%= @building.name %></h3>
 
 <% if @units.size == 0 %>
 	<p>There are no units currently at this building. Click <%= link_to "here", :controller => "units" %> to add a unit.</p>
 	<% else %>
-	<% for unit in @units %>
-		<%= link_to unit.unit_num, {:action => "view_unit", :id => unit.id}, :class => unit.status %><br />
+	
+	<% if @building.name == "Hwy 62 Building #1"%>
+		<%= render :partial => 'hwy_62_1'%>
+	<% end %>
+	
+	<% if @building.name == "Hwy 62 Building #2"%>
+		<%= render :partial => 'hwy_62_2'%>
+	<% end %>
+	
+	<% if @building.name == "West Side #1"%>
+		<%= render :partial => 'west_side1'%>
+	<% end %>
+	
+	<% if @building.name == "West Side #2"%>
+		<%= render :partial => 'west_side2'%>
+	<% end %>
+	
+	<% if @building.name == "West Side #3"%>
+		<%= render :partial => 'west_side3'%>
+	<% end %>
+	
+	<% if @building.name == "Building #1"%>
+		<%= render :partial => 'ss_1'%>
 	<% end %>
 <% end %>

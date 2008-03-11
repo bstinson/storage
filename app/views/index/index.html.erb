@@ -15,7 +15,7 @@
 		<p> You have no buildings for your company. Click <%= link_to "here", :controller => "buildings" %> to add them.</p>
 		<% else %>
 			<%= collection_select :form, :id, @buildings, :id, :name,
-			                      {},
+								  {:prompt => 'Select Building'},
 			                      {:onChange => remote_function(:update => "unit_status", :url => { :action => :update_building },
 																						  :with => "'building_id=' + value") } %>
 		<% end %>

@@ -1,0 +1,7 @@
+<table border="1">
+	<tr style="vertical-align:center;">
+		<% for unit in @units %>
+		<td style="height:<%= unit.height * 5 %>px; width:<%= unit.width * 5 %>px;" class="<%= unit.status %>"><%= link_to unit.unit_num, :action => "view_unit", :unit_num => unit.unit_num, :building_id => unit.building_id %></td>
+		<% end %>
+	</tr>	
+</table>

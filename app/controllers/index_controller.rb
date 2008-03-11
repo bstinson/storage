@@ -24,7 +24,7 @@ class IndexController < ApplicationController
   def update_building
     @user = User.find_by_id(session[:user_id])
     @building = Building.find_by_id(params[:building_id])
-    @units = Unit.find_all_by_building_id(params[:building_id])
+    @units = Unit.find_all_by_building_id(params[:building_id], :order => 'unit_num ASC')
     render :partial => "update_building"
   end
 
@@ -35,8 +35,7 @@ class IndexController < ApplicationController
     if flash[:notice] == nil
       flash[:notice] = "Here is where you can view information on a unit, and also update its information."
     end
-    @buildings = Building.find_all_by_company_id(@user.company_id)
-    @unit = Unit.find_by_id(params[:id])
+    @unit = Unit.find_by_unit_num_and_building_id(params[:unit_num], params[:building_id])
     @notes = Note.find_all_by_unit_id(@unit.id, :order => "created_at DESC")
     @notes_count = Note.count(:conditions => "unit_id = " + @unit.id.to_s )
 
@@ -52,7 +51,7 @@ class IndexController < ApplicationController
         if @unit.update_attributes(params[:unit])
           StatusChange.deliver_added(@unit)
           flash[:notice] = "Customer Added!"
-          redirect_to :action => "view_unit", :id => @unit
+          redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
       else
         @unit = Unit.find_by_id(params[:id])
@@ -64,12 +63,13 @@ class IndexController < ApplicationController
     @companies = Company.find(:all)
     @company_id = User.find_by_id(@user.company_id)
     @unit = Unit.find(params[:id])
+    @notified_recipients = ("brads@usdol.net" "gary@usdol.net")
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
           StatusChange.deliver_status(@unit)
           flash[:notice] = "Customer Updated!"
-          redirect_to :action => "view_unit", :id => @unit
+          redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
       else
       @unit = Unit.find_by_id(params[:id])
@@ -98,7 +98,7 @@ class IndexController < ApplicationController
       flash[:notice] = "Customer has been removed!"                            
       redirect_to :action => "index"
     else
-      redirect_to :action => "view_unit", :id => @unit
+      redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
     end
   end
     
@@ -113,7 +113,7 @@ class IndexController < ApplicationController
     if request.post? and params[:note]
       @note = Note.new(params[:note])
       if @note.save
-        redirect_to :action => "view_unit", :id => @unit
+        redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
       end
     else
       render :partial => "add_note"   

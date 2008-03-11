@@ -149,28 +149,28 @@ img{
 
 /* Unit Statuses */
 
-a.Vacant {
-	color:gray;
+.Vacant {
+	background-color:#CCC;
 }
 
-a.Unclean{
-	color:blue;
+.Unclean{
+	background-color:blue;
 }
 
-a.Late{
-	color:yellow;
+.Late{
+	background-color:yellow;
 }
 
-a.Damage{
-	color:black;
+.Damage{
+	background-color:black;
 }
 
-a.Locked{
-	color:red;
+.Locked{
+	background-color:red;
 }
 
-a.System{
-	color:#E83;
+.System{
+	background-color:#E83;
 }
 
 form fieldset{
