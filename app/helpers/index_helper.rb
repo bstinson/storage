@@ -13,4 +13,10 @@ module IndexHelper
   def format_address(address, city, state, zip)
     address + "<br />" + city + ", " + state + " " + zip.to_s
   end
+  
+  # Picks color for unit status
+  def unit_color(unit)
+    @unit = Unit.find_by_unit_num(unit)
+    @unit.status
+  end
 end

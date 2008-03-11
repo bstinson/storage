@@ -184,3 +184,11 @@ form legend{
 form label{
 	color:black;
 }
+
+#map{
+	padding:0
+	margin:0;
+	vertical-align:top;
+}#map div{
+	display:inline-block;
+}
