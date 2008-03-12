@@ -1,5 +1,5 @@
-<h2 style="text-align:center;"><%= @company.name %></h2>
-<h3 style="text-align:center;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%></h3>
+<h2 style="text-align:center;"><%= @company.name %><br />
+<span style="font-size:smaller;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%><br /><%= @company.phone %></span></h2>
 
 <div style="width:60%; margin: 0 auto;">
 <div>

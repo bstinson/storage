@@ -4,7 +4,7 @@ before_filter :protect
   def index
     @user = User.find_by_id(session[:user_id])
     @companies = Company.find(:all)
-    @buildings = Building.find_all_by_company_id(@user.company_id)
+    @buildings = Building.find_all_by_company_id(@user.company_id, :order => "name ASC")
     flash[:notice] = "This is where you can see what units are available and also, you have the ability to add Units to your buildings. This probably won't be seen by anyone, except for an administrator."
   end
   

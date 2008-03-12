@@ -17,7 +17,7 @@ before_filter :protect
   def index
     @companies = Company.find(:all)
     @user = User.find_by_id(session[:user_id])
-    @buildings = Building.find_all_by_company_id(@user.company_id)
+    @buildings = Building.find_all_by_company_id(@user.company_id, :order => "name ASC")
   end
   
   protected

@@ -44,7 +44,7 @@ class Unit < ActiveRecord::Base
   
   # Actual Data Validations
   validates_presence_of :unit_num, :width, :height, :building_id, :company_id
-#  validates_uniqueness_of :unit_num
+  validates_uniqueness_of :unit_num, :scope => [:building_id, :unit_num], :message => "You have already added this unit to the building."
   validates_numericality_of :monthly_price, :allow_nil => true
   validates_length_of :name, :within => NAME_RANGE, :allow_nil => true
   validates_length_of :address, :within => ADDRESS_RANGE, :allow_nil => true

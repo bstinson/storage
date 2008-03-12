@@ -22,7 +22,7 @@
 		<p>There are no units for this building yet.</p>
 		<% else %>		
 			<% for unit in @units %>
-				<%= link_to unit.unit_num %> (<%= unit.status%>)<br />
+				<%= link_to unit.unit_num, :controller => "index", :action => "view_unit", :unit_num => unit.unit_num, :building_id => building.id %> (<%= unit.status%>)<br />
 			<% end %>	
 	<% end %>
 <% end %>
