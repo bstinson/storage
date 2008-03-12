@@ -3,12 +3,12 @@
 	<p>There are no units currently at this building. Click <%= link_to "here", :controller => "units" %> to add a unit.</p>
 	<% else %>
 	
-	<% if @building.name == "Hwy 62 Building #1"%>
-		<%= render :partial => 'hwy_62_1'%>
+	<% if @building.name == "Keep Safe #1"%>
+		<%= render :partial => 'keep_safe1'%>
 	<% end %>
 	
-	<% if @building.name == "Hwy 62 Building #2"%>
-		<%= render :partial => 'hwy_62_2'%>
+	<% if @building.name == "Keep Safe #2"%>
+		<%= render :partial => 'keep_safe2'%>
 	<% end %>
 	
 	<% if @building.name == "West Side #1"%>

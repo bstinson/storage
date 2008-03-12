@@ -26,6 +26,7 @@
 	<%= if_empty("(alt) Contact", @unit.alt_contact) %>
 	<%= if_empty("Contact Phone", @unit.alt_phone) %>	
 	<%= if_empty("Auth. Users", @unit.auth_users)%>
+	<%= if_empty("Deposit", number_to_currency(@unit.deposit.to_s))%>	
 	<%= if_empty("Monthly Price", number_to_currency(@unit.monthly_price.to_s))%>
 	<%= if_empty("Code", @unit.code)%>
 

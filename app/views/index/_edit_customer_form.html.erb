@@ -66,7 +66,12 @@
 	<label for="unit_auth_users">Auth. Users:</label><br />
 	<%= form.text_field :auth_users,
 						:size => Unit::AUTH_USERS_SIZE %><br /><br />
-
+						
+	<label for="unit_deposit">Deposit ($):</label><br />
+	<%= form.text_field :deposit,
+						:size => Unit::DEPOSIT_SIZE,
+						:maxlength => Unit::DEPOSIT_MAX_LENGTH %><br /><br />
+						
 	<label for="unit_monthly_price">Monthly Price ($):</label><br />
 	<%= form.text_field :monthly_price,
 						:size => Unit::PRICE_SIZE,

@@ -50,7 +50,7 @@ img{
 /******* Divider ***********/
 
 #divide{
-	background-color:#7B4;
+	background-color:#15A;
 	color:#FFF;
 	font-weight:bold;
 	width:100%;
@@ -85,7 +85,7 @@ img{
 }
 
 #login_form{
-	background-color:#7B4;
+	background-color:#15A;
 	color:#FFF;
 	padding:10px;
 	font-size:8pt;
@@ -151,6 +151,11 @@ img{
 
 #unit_status{
 	padding:10px;
+}
+
+#unit_status a{
+	color:black;
+	font-weight:bold;
 }
 
 #unit_status div{
