@@ -10,7 +10,7 @@ class IndexController < ApplicationController
     end
     @companies = Company.find(:all)
     if flash[:notice] = ""
-      flash[:notice] = "Welcome to your application's home page! This is where you can get a quick view of what sheds our open for your buildings, or get links to further actions that you can take. Enjoi."
+      flash[:notice] = "Welcome to your application's home page! This is where you can get a quick view of what sheds our open for your buildings, or get links to further actions that you can take. Enjoy!"
     end
     @buildings = Building.find_all_by_company_id(@company_id, :order => 'name ASC')
     @units = Unit.find_all_by_company_id(@company_id.id, :order => 'unit_num ASC')
