@@ -8,7 +8,7 @@
 	<% else %>
 		<% for user in @users -%>
 			<%= link_to user.name, :action => "show_user", :id => user -%>
-			(<%= show_company_name_for_id(user.company_id)%>)<br />
+			(<%= show_company_name_for_id(user.company_id)%>) <%= link_to "del", :action => 'delete', :id => user.id %><br />
 		<% end -%>
 	<% end -%>
 </p>

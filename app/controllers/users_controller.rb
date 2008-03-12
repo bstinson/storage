@@ -62,13 +62,17 @@ class UsersController < ApplicationController
       render :partial => "password_change"
       end
     end
-
+    
+    def delete
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to :action => "list_users"   
+    end
   protected
-
+    
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|
         username == "admin" && password == "1234"
       end
     end
-
 end

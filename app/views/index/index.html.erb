@@ -48,6 +48,10 @@
 						<td> Locked Out:</td>
 						<td><%= @locked_units.size %></td>
 					</tr>
+					<tr>
+						<td> Occupied %:</td>
+						<td><%= number_to_percentage((((@units.size - @vacant_units.size) * 100) / @units.size), :precision => 0) %></td>
+					</tr>					
 				</table>
 			</div>	
 		</div>
