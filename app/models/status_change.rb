@@ -3,7 +3,7 @@ class StatusChange < ActionMailer::Base
     @subject    = 'New Customer'
     @body       = {}
     @body["unit"] = unit
-    @recipients = 'gary@usdol.net, kim@usdol.net, scott@usdol.net, amy@usdol.net'
+    @recipients = 'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
@@ -12,7 +12,7 @@ class StatusChange < ActionMailer::Base
     @subject    = 'Customer Removed'
     @body       = {}
     @body["unit"] = unit
-    @recipients = 'gary@usdol.net, kim@usdol.net, scott@usdol.net, amy@usdol.net'
+    @recipients = 'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
@@ -21,7 +21,7 @@ class StatusChange < ActionMailer::Base
     @subject    = 'Status Change'
     @body       = {}
     @body["unit"] = unit
-    @recipients =  'gary@usdol.net, kim@usdol.net, scott@usdol.net, amy@usdol.net'
+    @recipients =  'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end  
