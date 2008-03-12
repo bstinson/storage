@@ -1,7 +1,8 @@
 <h4>Notes <%= link_to_remote "Add",
 						:url =>{:action => 'add_note', :id => @unit },
 						:update => "add_note",
-						:style => "font-size:8.75px;"
+						:style => "font-size:8.75px;",
+						:complete => visual_effect(:blind_down, 'add_note', :duration => '0.3')
 						 -%></h4>
 
 <div id="add_note">
