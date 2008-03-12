@@ -14,7 +14,6 @@ class IndexController < ApplicationController
     end
     @buildings = Building.find_all_by_company_id(@company_id, :order => 'name ASC')
     @units = Unit.find_all_by_company_id(@company_id.id, :order => 'unit_num ASC')
-    @backwards_units = Unit.find_all_by_company_id(@company_id.id, :order => 'unit_num DESC')
     @vacant_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Vacant')
     @occupied_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Occupied')
     @unclean_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Unclean')

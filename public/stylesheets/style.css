@@ -149,6 +149,16 @@ img{
 
 /* Unit Statuses */
 
+#unit_status{
+	padding:10px;
+}
+
+#unit_status div{
+	width:250px;
+	background-color:#eff;
+	border:1px solid #ccc;
+	padding:10px;
+}
 .Vacant {
 	background-color:#CCC;
 }
@@ -158,7 +168,7 @@ img{
 }
 
 .Unclean{
-	background-color:blue;
+	background-color:#9ce;
 }
 
 .Late{
@@ -187,12 +197,4 @@ form legend{
 }
 form label{
 	color:black;
-}
-
-#map{
-	padding:0
-	margin:0;
-	vertical-align:top;
-}#map div{
-	display:inline-block;
 }
