@@ -15,8 +15,8 @@ module IndexHelper
   end
   
   # Picks color for unit status
-  def unit_color(unit)
-    @unit = Unit.find_by_unit_num(unit)
+  def unit_color(unit_num)
+    @unit = Unit.find_by_unit_num_and_building_id(unit_num, @building.id)
     @unit.status
   end
 end

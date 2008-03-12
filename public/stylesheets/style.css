@@ -153,6 +153,10 @@ img{
 	background-color:#CCC;
 }
 
+.Occupied{
+	background-color:#7B4;
+}
+
 .Unclean{
 	background-color:blue;
 }
