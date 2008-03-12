@@ -13,6 +13,17 @@ before_filter :protect
       end
     end    
   end
+  def edit
+    @companies = Company.find(:all)
+    @user = User.find_by_id(session[:user_id])
+    @building = Building.find_by_id(params[:id])    
+    if request.post? and params[:building]
+      if @building.update_attributes(params[:building])
+        flash[:notice] = "Successfully updated building!"
+        redirect_to :action => 'index'
+      end
+    end    
+  end  
   
   def index
     @companies = Company.find(:all)
