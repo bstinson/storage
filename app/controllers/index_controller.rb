@@ -93,9 +93,15 @@ class IndexController < ApplicationController
                                 :alt_contact => nil,
                                 :alt_phone => nil,
                                 :auth_users => nil,
+                                :deposit => nil,
                                 :monthly_price => nil,
                                 :code => nil)
-      flash[:notice] = "Customer has been removed!"                            
+      @notes = Note.find_all_by_unit_id(@unit.id)
+        for note in notes
+          note.destroy                           
+        end  
+      flash[:notice] = "Customer has been removed!"
+                                  
       redirect_to :action => "index"
     else
       redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
