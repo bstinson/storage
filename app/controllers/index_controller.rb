@@ -126,6 +126,10 @@ class IndexController < ApplicationController
     end
   end
   
+  def popup 
+    @unit = Unit.find_by_unit_num_and_building_id(params[:unit_num], params[:building_id])
+    render(:layout => "layouts/popup")    
+  end  
   protected
 
     def protect

@@ -1,7 +1,8 @@
 <table border="1">
 	<tr style="vertical-align:center;">
 		<% for unit in @units %>
-		<td style="height:<%= unit.height * 12 %>px; width:<%= unit.width * 12 %>px;" class="<%= unit.status %>"><%= link_to unit.unit_num, :action => "view_unit", :unit_num => unit.unit_num, :building_id => unit.building_id %></td>
+		 <%= building_pop_up(unit.height, unit.width, unit.status, unit.unit_num)%>
 		<% end %>
+		
 	</tr>	
 </table>

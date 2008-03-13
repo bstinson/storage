@@ -147,16 +147,11 @@ img{
 	padding:5px;
 }
 
-/* Unit Statuses */
-
-#unit_status{
+#shed_status{
 	padding:10px;
 }
 
-#unit_status a{
-	color:black;
-	font-weight:bold;
-}
+/* Unit Statuses */
 
 #unit_status div{
 	width:250px;
@@ -164,6 +159,13 @@ img{
 	border:1px solid #ccc;
 	padding:10px;
 }
+
+
+#unit_status table a{
+	color:black;
+	font-weight:bold;
+}
+
 .Vacant {
 	background-color:#CCC;
 }
