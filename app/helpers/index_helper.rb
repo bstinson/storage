@@ -20,6 +20,11 @@ module IndexHelper
     @unit.status
   end
   
+  #Show unit dimensions
+  def unit_dimensions(width, height)
+    render :inline => width.to_s + ' x ' + height.to_s
+  end
+    
   # Renders td with scripts for West Side buildings and their popups
   def building_pop_up(height, width, status, unit_num)
     render :partial => 'west_side', :locals => {:height => height, :width => width, :status => status, :unit_num => unit_num}

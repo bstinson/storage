@@ -1,9 +1,9 @@
 <p>
 	<b>Status:</b> <%= @unit.status %><br />
-	<b>Size:</b> <%= @unit.width %> x <%= @unit.height %><br />
+	<b>Size:</b> <%= unit_dimensions(@unit.width, @unit.height) %><br />
 	<% if @unit.name.nil? %>
 		<% else %>
-		<b>Name:</b><%= @unit.name %>
+		<b>Name:</b> <%= @unit.name %>
 	<% end%>
 <p>
 
