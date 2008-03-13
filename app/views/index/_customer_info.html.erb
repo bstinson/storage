@@ -21,7 +21,7 @@
 	
 	<tr>
 		<td class="label">Phone:</td>
-		<td><%= @unit.phone %></td>
+		<td><%= number_to_phone(@unit.phone, :area_code => true) %></td>
 	</tr>
 
 	<%= if_empty("Work/Cell", @unit.work_cell)%>
