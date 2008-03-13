@@ -1,0 +1,10 @@
+<p>
+	<b>Status:</b> <%= @unit.status %><br />
+	<b>Size:</b> <%= @unit.width %> x <%= @unit.height %><br />
+	<% if @unit.name.nil? %>
+		<% else %>
+		<b>Name:</b><%= @unit.name %>
+	<% end%>
+<p>
+
+<p><%= link_to "View Page", :action => "view_unit", :unit_num => @unit.unit_num, :building_id => params[:building_id] %></p>	

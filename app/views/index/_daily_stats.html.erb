@@ -1,0 +1,36 @@
+<div>
+<table>
+	<caption><b>Daily Stats</b></caption>
+	<tr>
+		<td>Total Units:</td>
+		<td><%= @units.size %></td>
+	</tr>
+	<tr>
+		<td>Vacancies:</td>
+		<td><%= @vacant_units.size %></td>
+	</tr>
+	<tr>
+		<td> Occupied Units:</td>
+		<td><%= @units.size - @vacant_units.size %></td>
+	</tr>
+	<tr>
+		<td> Needing Cleaning:</td>
+		<td><%= @unclean_units.size %></td>
+	</tr>
+	<tr>
+		<td> Damaged:</td>
+		<td><%= @damaged_units.size %></td>
+	</tr>
+	<tr>
+		<td> Locked Out:</td>
+		<td><%= @locked_units.size %></td>
+	</tr>
+	<% if @vacant_units.size == 0 %>
+	<% else %>
+	<tr>
+		<td> Occupied %:</td>
+		<td><%= number_to_percentage((((@units.size - @vacant_units.size) * 100) / @units.size), :precision => 0) %></td>
+	</tr>
+	<% end %>					
+</table>
+</div>
