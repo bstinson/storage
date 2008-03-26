@@ -1,0 +1,16 @@
+<div id="divide">
+</div>
+
+<div id="content">
+	<h3> Change Unit Status</h3>
+	<% form_for :unit do |form| %>
+
+		<%= error_messages_for :unit %>
+
+		<label for="unit_status">Status:</label><br />
+		<%= form.select :status, %w{Vacant Unclean Damaged System}%><br /><br />
+
+		<%= submit_tag "Change", :class => "submit" %> <%= link_to "Cancel", :action => "view_unit", :building_id => @unit.building_id, :unit_num => @unit.unit_num %>
+	
+	<% end %>	
+</div>	
