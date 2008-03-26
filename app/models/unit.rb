@@ -5,7 +5,7 @@ class Unit < ActiveRecord::Base
   # Allowed sizes for data fields
   UNIT_NUM_MAX_LENGTH   = 3
   NAME_MIN_LENGTH       = 3
-  NAME_MAX_LENGTH       = 25
+  NAME_MAX_LENGTH       = 35
   ADDRESS_MIN_LENGTH    = 10
   ADDRESS_MAX_LENGTH    = 40
   CITY_MIN_LENGTH       = 5
@@ -16,7 +16,7 @@ class Unit < ActiveRecord::Base
   DL_LENGTH             = 9
   PHONE_MIN_LENGTH      = 7
   PHONE_MAX_LENGTH      = 14
-  EMAIL_MAX_LENGTH      = 30
+  EMAIL_MAX_LENGTH      = 50
   PRICE_MAX_LENGTH      = 5
   DEPOSIT_MAX_LENGTH    = 5
   CODE_LENGTH           = 4
