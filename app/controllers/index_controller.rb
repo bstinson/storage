@@ -46,10 +46,13 @@ class IndexController < ApplicationController
     @companies = Company.find(:all)
     @company_id = User.find_by_id(@user.company_id)
     @unit = Unit.find(params[:id])
+    @emails = User.find_all_by_company_id(@user.company_id)
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
-          StatusChange.deliver_added(@unit, @user)
+          for email in @emails
+            StatusChange.deliver_added(@unit, @user, email.email)
+          end
           flash[:notice] = "Customer Added!"
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
@@ -63,11 +66,13 @@ class IndexController < ApplicationController
     @companies = Company.find(:all)
     @company_id = User.find_by_id(@user.company_id)
     @unit = Unit.find(params[:id])
-    @notified_recipients = ("brads@usdol.net" "gary@usdol.net")
+    @emails = User.find_all_by_company_id(@user.company_id)    
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
-          StatusChange.deliver_status(@unit, @user)
+          for email in @emails      
+            StatusChange.deliver_status(@unit, @user, email.email)
+          end  
           flash[:notice] = "Customer Updated!"
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
@@ -80,12 +85,15 @@ class IndexController < ApplicationController
     @unit = Unit.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])
     @notes = Note.find_all_by_unit_id(@unit.id)
+    @emails = User.find_all_by_company_id(@user.company_id)    
     if @notes != 0
       for note in @notes
          note.destroy
       end
-    end  
-    StatusChange.deliver_cleared(@unit, @user)                            
+    end
+    for email in @emails  
+      StatusChange.deliver_cleared(@unit, @user, email.email)                            
+    end
     if @unit.update_attributes( :status => "Vacant",
                                 :name => nil,
                                 :ssn => nil,

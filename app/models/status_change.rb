@@ -1,30 +1,30 @@
 class StatusChange < ActionMailer::Base
-  def added(unit, user)
+  def added(unit, user, email)
     @subject    = 'New Customer'
     @body       = {}
     @body["unit"] = unit
     @body["user"] = user
-    @recipients = 'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
+    @recipients = email
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
   
-  def cleared(unit, user)
+  def cleared(unit, user, email)
     @subject    = 'Customer Removed'
     @body       = {}
     @body["unit"] = unit
     @body["user"] = user
-    @recipients = 'brads@usdol.ne'
+    @recipients = email
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
   
-  def status(unit, user)
+  def status(unit, user, email)
     @subject    = 'Status Change'
     @body       = {}
     @body["unit"] = unit
     @body["user"] = user    
-    @recipients =  'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
+    @recipients =  email
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end  
