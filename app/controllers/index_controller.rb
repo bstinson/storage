@@ -80,7 +80,22 @@ class IndexController < ApplicationController
       @unit = Unit.find_by_id(params[:id])
     end
   end  
- 
+
+  def change_status
+    @user = User.find_by_id(session[:user_id])
+    @companies = Company.find(:all)
+    @company_id = User.find_by_id(@user.company_id)
+    @unit = Unit.find(params[:id])    
+    flash[:notice] = "Here is where you can change the status of a unit."
+    if request.post? and params[:unit]
+        if @unit.update_attributes(params[:unit])  
+          flash[:notice] = "Unit Status has been Changed!"
+          redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
+        end
+      else
+      @unit = Unit.find_by_id(params[:id])
+    end
+  end 
   def remove_customer
     @unit = Unit.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])

@@ -84,7 +84,7 @@
 									
 	<%= form.hidden_field :status, :value => 'Occupied' %>
 	
-	<%= submit_tag "Submit", :class => "submit" %> <%= link_to "Cancel", :action => "view_unit", :id => @unit.id %>
+	<%= submit_tag "Submit", :class => "submit" %> <%= link_to "Cancel", :action => "view_unit", :building_id => @unit.building_id, :unit_num => @unit.unit_num %>
 	
 	
 	<% end %>	
