@@ -79,6 +79,12 @@ class IndexController < ApplicationController
   def remove_customer
     @unit = Unit.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])
+    @notes = Note.find_all_by_unit_id(@unit.id)
+    if @notes != 0
+      for note in @notes
+         note.destroy
+      end
+    end  
     StatusChange.deliver_cleared(@unit, @user)                            
     if @unit.update_attributes( :status => "Vacant",
                                 :name => nil,

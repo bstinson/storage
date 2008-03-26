@@ -14,7 +14,7 @@ class StatusChange < ActionMailer::Base
     @body       = {}
     @body["unit"] = unit
     @body["user"] = user
-    @recipients = 'gary@usdol.net, kim@usdol.net, ssdoors@usdol.net, asmith@usdol.net'
+    @recipients = 'brads@usdol.ne'
     @from       = 'storage@usdol.net'
     @sent_on    = Time.now
   end
