@@ -29,7 +29,7 @@
 </div>
 
 <div style="width:90%; margin:0 auto; font-size:13px; line-height:1.25em;">
-<p style="clear:both; padding-top:20px;">Renter agrees to pay a monthly fee of <b><%= number_to_currency(@unit.monthly_price)%></b> ("fee") under the terms and conditions stated on this agreement for <b>Unit #<%= @unit.unit_num %></b>, with the size being <%= unit_dimensions(@unit.width, @unit.height) %>, for a term of <i>monthly</i>. Security deposit paid on _____________________ in the amount of <%= number_to_currency(@unit.deposit) %>.</p>
+<p style="clear:both; padding-top:20px;">Renter agrees to pay a monthly fee of <b><%= number_to_currency(@unit.monthly_price)%></b> ("fee") under the terms and conditions stated on this agreement for <b>Unit #<%= @unit.unit_num %></b>, with the size being <%= unit_dimensions(@unit.width, @unit.height) %>, for a term of <i>monthly</i>. Security deposit paid on <%= Date.today %> in the amount of <%= number_to_currency(@unit.deposit) %>.</p>
 
 <p>Provisions of this agreement:</p>
 
