@@ -49,7 +49,7 @@ class IndexController < ApplicationController
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
-          StatusChange.deliver_added(@unit)
+          StatusChange.deliver_added(@unit, @user)
           flash[:notice] = "Customer Added!"
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
@@ -67,7 +67,7 @@ class IndexController < ApplicationController
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
-          StatusChange.deliver_status(@unit)
+          StatusChange.deliver_status(@unit, @user)
           flash[:notice] = "Customer Updated!"
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
@@ -78,7 +78,8 @@ class IndexController < ApplicationController
  
   def remove_customer
     @unit = Unit.find_by_id(params[:id])
-    StatusChange.deliver_cleared(@unit)                            
+    @user = User.find_by_id(params[:user_id])
+    StatusChange.deliver_cleared(@unit, @user)                            
     if @unit.update_attributes( :status => "Vacant",
                                 :name => nil,
                                 :ssn => nil,
@@ -96,14 +97,10 @@ class IndexController < ApplicationController
                                 :deposit => nil,
                                 :monthly_price => nil,
                                 :code => nil)
-      @notes = Note.find_all_by_unit_id(@unit.id)
-        for note in notes
-          note.destroy                           
-        end  
-      flash[:notice] = "Customer has been removed!"
-                                  
+      flash[:notice] = "Customer has been removed!"                           
       redirect_to :action => "index"
     else
+      flash[:notice] = "There has been a problem and the customer has not been removed!"
       redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
     end
   end
@@ -129,7 +126,8 @@ class IndexController < ApplicationController
   def popup 
     @unit = Unit.find_by_unit_num_and_building_id(params[:unit_num], params[:building_id])
     render(:layout => "layouts/popup")    
-  end  
+  end 
+   
   protected
 
     def protect
