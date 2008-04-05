@@ -18,7 +18,7 @@ class IndexController < ApplicationController
     @occupied_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Occupied')
     @unclean_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Unclean')
     @damaged_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Damaged')
-    @locked_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Locked')
+    @late_units = Unit.find_all_by_company_id_and_status(@company_id.id, 'Late')
   end
   
   def update_building
