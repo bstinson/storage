@@ -25,8 +25,12 @@ module IndexHelper
     render :inline => width.to_s + ' x ' + height.to_s
   end
     
+  def building_pop_up(height, width, rowspan, colspan, unit_num)
+    render :partial => 'pop_up', :locals => {:height => height, :width => width, :rowspan => rowspan, :colspan => colspan, :unit_num => unit_num}
+  end
+  
   # Renders td with scripts for West Side buildings and their popups
-  def building_pop_up(height, width, status, unit_num)
+  def building_pop_up2(height, width, status, unit_num)
     render :partial => 'west_side', :locals => {:height => height, :width => width, :status => status, :unit_num => unit_num}
   end 
   
