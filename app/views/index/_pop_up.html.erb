@@ -1,0 +1,9 @@
+<td style="height:<%= height %>%; width:<%= width %>%;" rowspan="<%= rowspan %>" colspan="<%= colspan %>"class="<%= unit_color(unit_num) %>"><a href="#" id="<%= unit_num %>" onclick="return false;"> <%= unit_num %></a></td>
+<script type="text/javascript">
+
+	var hb4 = new HelpBalloon({
+		dataURL: '/index/popup?building_id=<%= @building.id %>&unit_num=<%= unit_num %>',
+		icon: $('<%= unit_num %>'),
+		title: 'Unit #<%= unit_num %>'
+	});
+</script>
