@@ -63,5 +63,5 @@ end
   ActionMailer::Base.smtp_settings = {
     :address    => "mail.usdol.net",
     :port       => 25,
-    :user_name  => "gary",
-    :password   => "letmein" }
+    :user_name  => "storage",
+    :password   => "1234" }
