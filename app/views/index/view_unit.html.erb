@@ -1,12 +1,8 @@
 <div id="divide">
 	<div>
-	<% if @unit.name.nil? %>
-		<%= link_to "Change Unit Status", :action => "change_status", :id => @unit %>
-	<% else %>	
 		<%= link_to "Edit Customer", :action => "edit_customer", :id => @unit %>
 		<%= link_to "Remove Customer", { :action => "remove_customer", :id => @unit, :user_id => @user.id}, :confirm => "This will erase all customer information for this unit. Are you sure you want to remove them?" %>
 		<%= link_to "Contract", {:action => "contract", :id => @unit }, :target => "_contract"%>
-	<% end %>
 	</div>
 </div>
 
@@ -18,24 +14,14 @@
 		</div>	
 	<% end %>
 	
-	<% if @unit.name.nil? %>
-	<% else %>
-		<div id="note_section">
+	<div id="note_section">
 		<%= render :partial => "notes" %>
-		</div>
-	<% end %>
+	</div>
 		
 	<div id="info">
 		<h3>Unit #<%= @unit.unit_num %></h3>
-			
-			<% if @unit.name.nil? %>
-				<% if @unit.status != "Vacant" %>
-					<p>Status: <span id="status"><%= @unit.status %></span></p>
-				<% end %>
-				<p>This unit is vacant. If you want to add a customer to this unit, click <%= link_to "here!", :action => "add_customer", :id => @unit.id %></p>
-			<% else %>
-				<%= render :partial => "customer_info" %>
-			<% end %>
+		
+		<%= render :partial => "customer_info" %>
 			
 	</div>	
 </div>	

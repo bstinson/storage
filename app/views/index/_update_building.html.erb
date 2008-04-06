@@ -23,7 +23,23 @@
 		<%= render :partial => 'west_side3'%>
 	<% end %>
 	
+	<% if @building.name == "Boat Shed #1"%>
+		<%= render :partial => 'boat1'%>
+	<% end %>	
+	
+	<% if @building.name == "Boat Shed #2"%>
+		<%= render :partial => 'boat2'%>
+	<% end %>	
+	
+	<% if @building.name == "Boat Shed #3"%>
+		<%= render :partial => 'boat3'%>
+	<% end %>
+	
 	<% if @building.name == "Building #1"%>
 		<%= render :partial => 'ss_1'%>
 	<% end %>
+	
+	<% if @building.name == "Warehouse"%>
+		<%= render :partial => 'ss_2'%>
+	<% end %>	
 <% end %>

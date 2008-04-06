@@ -7,4 +7,14 @@
 	<% end%>
 <p>
 
-<p><%= link_to "View Page", :action => "view_unit", :unit_num => @unit.unit_num, :building_id => params[:building_id] %></p>	
+<% if @unit.name.nil? %>
+	
+	<p><b>Options:</b><br />
+	<%= link_to "Rent", :action => "add_customer", :id => @unit %> |
+	<%= link_to "Change Status", :action => "change_status", :id => @unit %></p>
+	
+<% else %>
+
+	<p><%= link_to "View", :action => "view_unit", :unit_num => @unit.unit_num, :building_id => params[:building_id] %></p>	
+
+<% end %>
