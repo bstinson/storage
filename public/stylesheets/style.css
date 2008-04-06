@@ -175,19 +175,15 @@ img{
 }
 
 .Unclean{
-	background-color:#9ce;
+	background-color:#971;
 }
 
 .Late{
-	background-color:yellow;
+	background-color:red;
 }
 
 .Damage{
-	background-color:black;
-}
-
-.Locked{
-	background-color:red;
+	background-color:yellow;
 }
 
 .System{
