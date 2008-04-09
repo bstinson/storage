@@ -17,7 +17,6 @@ img{
 
 #header h2{
 	display:inline;
-	padding:10px;
 }
 
 #logout {
@@ -98,7 +97,11 @@ img{
 }
 #login_form input{
 	line-height:1.75em;
-	font-size:11pt;
+	font-size:1.5em;
+}
+
+#login_form label{
+	color:#FFF;
 }
 
 #admin_links{
