@@ -182,11 +182,11 @@ img{
 }
 
 .Late{
-	background-color:red;
+	background-color:yellow;
 }
 
-.Damage{
-	background-color:yellow;
+.Damaged{
+	background-color:red;
 }
 
 .System{

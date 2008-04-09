@@ -96,7 +96,11 @@ class IndexController < ApplicationController
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])  
           flash[:notice] = "Unit Status has been Changed!"
+          if @unit.name.nil?
+            redirect_to :action => "update_building", :building_id => @unit.building_id
+          else  
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
+          end
         end
       else
       @unit = Unit.find_by_id(params[:id])

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "buildings", :force => true do |t|
     t.string   "name"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 7) do
     t.integer  "unit_num"
     t.integer  "width"
     t.integer  "height"
-    t.integer  "monthly_price"
+    t.integer  "monthly_price", :limit => 10, :precision => 10, :scale => 0
     t.string   "name"
     t.string   "ssn"
     t.string   "dl"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 7) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deposit",       :default => 0
+    t.integer  "deposit",                                                    :default => 0
   end
 
   create_table "users", :force => true do |t|

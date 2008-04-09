@@ -1,6 +1,8 @@
 <div id="divide">
 	<div>
-		<%= link_to "Report", {:action => "customer_report"}, :popup => true %>
+		<% if @company_id == @user.company_id %>
+			<%= link_to "Report", {:action => "customer_report", :id => @company_id}, :popup => 'true' %>	
+		<% end %>
 	</div>	
 </div>
 
