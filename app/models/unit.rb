@@ -17,8 +17,8 @@ class Unit < ActiveRecord::Base
   PHONE_MIN_LENGTH      = 7
   PHONE_MAX_LENGTH      = 14
   EMAIL_MAX_LENGTH      = 50
-  PRICE_MAX_LENGTH      = 5
-  DEPOSIT_MAX_LENGTH    = 5
+  PRICE_MAX_LENGTH      = 10
+  DEPOSIT_MAX_LENGTH    = 10
   CODE_LENGTH           = 4
 
   # Text Box sizes for fields in form.
