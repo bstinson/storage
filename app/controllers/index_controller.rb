@@ -102,6 +102,7 @@ class IndexController < ApplicationController
       @unit = Unit.find_by_id(params[:id])
     end
   end 
+  
   def remove_customer
     @unit = Unit.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])

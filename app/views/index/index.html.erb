@@ -1,6 +1,6 @@
 <div id="divide">
 	<div>
-		<%= link_to "Report", {:action => "customer_report"}, :popup => true %>
+		<%= link_to "Report", {:action => "customer_report", :id => @company_id}, :popup => 'true' %>
 	</div>	
 </div>
 
@@ -28,11 +28,6 @@
 
 		<div id="unit_status">
 			<%= render :partial => 'daily_stats'%>
-		</div>
-		
-		<div>
-
-
 		</div>	
 	</div>
 </div>
