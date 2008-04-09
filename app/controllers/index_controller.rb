@@ -45,7 +45,6 @@ class IndexController < ApplicationController
     @unit = Unit.find_by_unit_num_and_building_id(params[:unit_num], params[:building_id])
     @notes = Note.find_all_by_unit_id(@unit.id, :order => "created_at DESC")
     @notes_count = Note.count(:conditions => "unit_id = " + @unit.id.to_s )
-
   end
   
   def add_customer
@@ -160,7 +159,7 @@ class IndexController < ApplicationController
   end
   
   def popup 
-    @unit = Unit.find_by_unit_num_and_building_id(params[:unit_num], params[:building_id])
+    @unit = Unit.find_by_building_id_and_unit_num(params[:building_id], params[:unit_num])
     render(:layout => "layouts/popup")    
   end 
   

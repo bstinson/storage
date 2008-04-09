@@ -19,7 +19,7 @@
 					<option value="<%= url_for(:controller => 'index', :action => 'update_building', :building_id => building.id) %>" <%= if_selected(building.id) %>><%= building.name %></option>
 				<% end %>
 			</select>	
-
+	</div>
 		<div id="unit_status">
 			
 				<% if @building.name == "Keep Safe #1"%>
@@ -63,10 +63,5 @@
 				<% end %>	
 			
 		</div>
-		
-		<div>
-
-
-		</div>	
-	</div>
+	
 </div>

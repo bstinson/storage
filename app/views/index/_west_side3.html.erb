@@ -1,8 +1,9 @@
-<table border="1">
+<table border="1" style="width:600px; height:175px;">
 	<tr style="vertical-align:center;">
-		<% for unit in @units %>
-		 <%= building_pop_up2(unit.height, unit.width, unit.status, unit.unit_num)%>
-		<% end %>
+		 <%= building_pop_up("inherit", "inherit", 1, 1, 30)%>
+		 <%= building_pop_up("inherit", "inherit", 1, 1, 31)%>
+		 <%= building_pop_up("inherit", "42", 1, 1, 32)%>
+
 		
 	</tr>	
 </table>

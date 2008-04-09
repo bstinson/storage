@@ -918,7 +918,7 @@ HelpBalloon.Options.prototype = {
 	 * Closing button image path
 	 * @var {String}
 	 */
-	button: 'images/button.png',
+	button: '/images/button.png',
 	
 	/**
 	 * Balloon image path prefix. There are 4 button images, numerically named, starting with 0.
@@ -928,7 +928,7 @@ HelpBalloon.Options.prototype = {
 	 * X indicates the anchor corner
 	 * @var {String}
 	 */
-	balloonPrefix: 'images/balloon-',
+	balloonPrefix: '/images/balloon-',
 	
 	/**
 	 * The image filename suffix, including the file extension
