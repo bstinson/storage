@@ -21,7 +21,9 @@
 	<div id="info">
 		<h3>Unit #<%= @unit.unit_num %></h3>
 		
-		<%= render :partial => "customer_info" %>
-			
+		<% if @unit.name.nil? %>
+		<% else %>
+			<%= render :partial => "customer_info" %>
+		<% end %>	
 	</div>	
 </div>	

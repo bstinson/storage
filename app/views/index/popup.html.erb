@@ -11,7 +11,8 @@
 	
 	<p><b>Options:</b><br />
 	<%= link_to "Rent", :action => "add_customer", :id => @unit %> |
-	<%= link_to "Change Status", :action => "change_status", :id => @unit %></p>
+	<%= link_to "Change Status", :action => "change_status", :id => @unit %> |
+	<%= link_to "Notes", :action => "view_unit", :building_id => @unit.building_id, :unit_num => @unit.unit_num %></p>
 	
 <% else %>
 
