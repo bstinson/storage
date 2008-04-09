@@ -15,7 +15,7 @@
 			<div id="logout">Logged in as <%= @user.name.capitalize %> (<%= link_to "Logout", :controller => "users", :action =>"logout", :class => "logout" %>)</div>
 		<% end -%>
 
-		<h2><%= link_to "Storage Units", :controller => "index" %></h2>
+		<h2><%= link_to_unless_current(image_tag("/images/logo.jpg", :alt => "Storage Admin"), :action => 'index' )-%></h2>
 
 		
 	</div>
