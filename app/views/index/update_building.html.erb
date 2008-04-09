@@ -1,0 +1,72 @@
+<div id="divide">
+	<div>
+		<%= link_to "Report", {:action => "customer_report"}, :popup => true %>
+	</div>	
+</div>
+
+<div id="content">
+	
+	<div id="helper">
+		<%= textilize(flash[:notice])%>
+	</div>
+		
+	<div id="shed_status">
+		<h3>Buildings</h3>
+
+			<select ONCHANGE="location = this.options[this.selectedIndex].value;">
+					<option value="index">Select Building</option>
+				<% for building in @buildings %>
+					<option value="<%= url_for(:controller => 'index', :action => 'update_building', :building_id => building.id) %>" <%= if_selected(building.id) %>><%= building.name %></option>
+				<% end %>
+			</select>	
+
+		<div id="unit_status">
+			
+				<% if @building.name == "Keep Safe #1"%>
+					<%= render :partial => 'keep_safe1'%>
+				<% end %>
+
+				<% if @building.name == "Keep Safe #2"%>
+					<%= render :partial => 'keep_safe2'%>
+				<% end %>
+
+				<% if @building.name == "West Side #1"%>
+					<%= render :partial => 'west_side1'%>
+				<% end %>
+
+				<% if @building.name == "West Side #2"%>
+					<%= render :partial => 'west_side2'%>
+				<% end %>
+
+				<% if @building.name == "West Side #3"%>
+					<%= render :partial => 'west_side3'%>
+				<% end %>
+
+				<% if @building.name == "Boat Shed #1"%>
+					<%= render :partial => 'boat1'%>
+				<% end %>	
+
+				<% if @building.name == "Boat Shed #2"%>
+					<%= render :partial => 'boat2'%>
+				<% end %>	
+
+				<% if @building.name == "Boat Shed #3"%>
+					<%= render :partial => 'boat3'%>
+				<% end %>
+
+				<% if @building.name == "Building #1"%>
+					<%= render :partial => 'ss_1'%>
+				<% end %>
+
+				<% if @building.name == "Warehouse"%>
+					<%= render :partial => 'ss_2'%>
+				<% end %>	
+			
+		</div>
+		
+		<div>
+
+
+		</div>	
+	</div>
+</div>

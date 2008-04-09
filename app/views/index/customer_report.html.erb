@@ -1,0 +1,14 @@
+<% @total = 0 %>
+<table style="width:500px;">
+	<caption><b>Quick Customer Report</b></caption>
+<% for unit in @units %>
+  <% if unit.name.nil? %>
+    <% else %>
+		<% @total += unit.monthly_price %>
+    	<tr><td><%= unit.name %></td> <td><%= number_to_currency( unit.monthly_price) %></td></tr>
+  <% end %>  
+<% end %>
+
+<tr style="font-weight:bold;"><td>Total:</td> <td>$<%= @total %></td></tr>
+
+</table>

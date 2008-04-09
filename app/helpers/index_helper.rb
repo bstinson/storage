@@ -9,6 +9,12 @@ module IndexHelper
     end
   end
   
+  def if_selected(id)
+    if id == @building.id
+      "selected=\"selected\""
+    end
+  end  
+  
   # Formats address onto two lines
   def format_address(address, city, state, zip)
     address + "<br />" + city + ", " + state + " " + zip.to_s

@@ -1,4 +1,8 @@
-<div id="divide"></div>
+<div id="divide">
+	<div>
+		<%= link_to "Report", {:action => "customer_report"}, :popup => true %>
+	</div>	
+</div>
 
 <div id="content">
 	
@@ -14,10 +18,12 @@
 		<% if @buildings.size == 0 %>
 		<p> You have no buildings for your company. Click <%= link_to "here", :controller => "buildings" %> to add them.</p>
 		<% else %>
-			<%= collection_select :form, :id, @buildings, :id, :name,
-								  {:prompt => 'Select Building'},
-			                      {:onChange => remote_function(:update => "unit_status", :url => { :action => :update_building },
-																						  :with => "'building_id=' + value") } %>
+			<select ONCHANGE="location = this.options[this.selectedIndex].value;">
+					<option value="index">Select Building</option>
+				<% for building in @buildings %>
+					<option value="<%= url_for(:controller => 'index', :action => 'update_building', :building_id => building.id) %>"><%= building.name %></option>
+				<% end %>
+			</select>	
 		<% end %>
 
 		<div id="unit_status">
