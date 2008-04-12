@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "buildings", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(:version => 9) do
     t.string   "note"
     t.integer  "unit_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "prevcustomer_id"
+  end
+
+  create_table "prevcustomers", :force => true do |t|
+    t.string   "name"
+    t.string   "ssn"
+    t.string   "dl"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "work_cell"
+    t.string   "alt_contact"
+    t.string   "alt_phone"
+    t.string   "auth_users"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

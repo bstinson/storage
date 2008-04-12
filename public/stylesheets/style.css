@@ -193,6 +193,13 @@ img{
 	background-color:#E83;
 }
 
+#legend{
+	width:300px;
+	margin:0 auto;
+	padding:10px;
+	border:1px solid #333;
+}
+
 form fieldset{
 	color:gray;
 	border-style: solid none none none;

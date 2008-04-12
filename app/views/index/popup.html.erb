@@ -16,6 +16,9 @@
 	
 <% else %>
 
-	<p><%= link_to "View", :action => "view_unit", :unit_num => @unit.unit_num, :building_id => params[:building_id] %></p>	
+	<p>
+		<%= link_to "View", :action => "view_unit", :unit_num => @unit.unit_num, :building_id => params[:building_id] %> |
+		<%= link_to "Change Status", :action => "change_status", :id => @unit %>
+	</p>	
 
 <% end %>

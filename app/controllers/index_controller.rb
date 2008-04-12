@@ -51,6 +51,9 @@ class IndexController < ApplicationController
     @emails = User.find_all_by_company_id(@user.company_id)
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
+      @test_unit = Unit.new(params[:unit])
+      @previous_customer =  Prevcustomer.find_by_ssn_and_dl(@test_unit.ssn, @test_unit.dl)
+      if @previous_customer.nil?
         if @unit.update_attributes(params[:unit])
           for email in @emails
             StatusChange.deliver_added(@unit, @user, email.email)
@@ -59,6 +62,9 @@ class IndexController < ApplicationController
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
       else
+        redirect_to :action => "view_previous_customer", :prev_id => @previous_customer, :unit_id => @unit
+      end
+    else
         @unit = Unit.find_by_id(params[:id])
     end
   end
@@ -108,14 +114,30 @@ class IndexController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     @notes = Note.find_all_by_unit_id(@unit.id)
     @emails = User.find_all_by_company_id(@user.company_id)    
-    if @notes != 0
-      for note in @notes
-         note.destroy
-      end
-    end
     for email in @emails  
       StatusChange.deliver_cleared(@unit, @user, email.email)                            
     end
+    @prev_customer = Prevcustomer.new(:name => @unit.name,
+                                      :ssn => @unit.ssn,
+                                      :dl => @unit.dl,
+                                      :address => @unit.address,
+                                      :city => @unit.city,
+                                      :state => @unit.state,
+                                      :zip => @unit.zip,
+                                      :phone => @unit.phone,
+                                      :work_cell => @unit.work_cell,
+                                      :email => @unit.email,
+                                      :alt_contact => @unit.alt_contact,
+                                      :alt_phone => @unit.alt_phone,
+                                      :auth_users => @unit.auth_users,
+                                      :code => @unit.code)
+    @prev_customer.save
+    if @notes != 0
+      for note in @notes
+        note.update_attributes(:prevcustomer_id => @prev_customer.id,
+                               :unit_id => nil)
+      end
+    end  
     if @unit.update_attributes( :status => "Vacant",
                                 :name => nil,
                                 :ssn => nil,
@@ -152,6 +174,7 @@ class IndexController < ApplicationController
     if request.post? and params[:note]
       @note = Note.new(params[:note])
       if @note.save
+        flash[:notice] = "Note Added!"
         redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
       end
     else
@@ -170,7 +193,16 @@ class IndexController < ApplicationController
     render(:layout => "layouts/popup")
   end
     
-   
+  def view_previous_customer
+    flash[:notice] = "You are trying to add a previous customer! Please review their past information and decide whether or not to continue"
+    @user = User.find_by_id(session[:user_id])
+    @company_id = User.find_by_id(@user.company_id)
+    @companies = Company.find(:all)
+    @previous_customer = Prevcustomer.find_by_id(params[:prev_id])
+    @notes = Note.find_all_by_prevcustomer_id(@previous_customer.id, :order => "created_at DESC")
+    @notes_count = Note.count(:conditions => "prevcustomer_id = " + @previous_customer.id.to_s )  
+  end 
+  
   protected
 
     def protect

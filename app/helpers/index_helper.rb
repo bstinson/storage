@@ -35,12 +35,4 @@ module IndexHelper
     render :partial => 'pop_up', :locals => {:height => height, :width => width, :rowspan => rowspan, :colspan => colspan, :unit_num => unit_num}
   end
   
-  # Renders td with scripts for West Side buildings and their popups
-  def building_pop_up2(height, width, status, unit_num)
-    render :partial => 'west_side', :locals => {:height => height, :width => width, :status => status, :unit_num => unit_num}
-  end 
-  
-  def west_side1(unit_num, rowspan)
-    render :text => '<td rowspan="' + (rowspan.to_s) + '" class="<%= unit_color('+ (unit_num.to_s) + ')%>"><%= link_to "'+ (unit_num.to_s) +'", :action => "view_unit", :unit_num => "' + (unit_num.to_s) + '", :building_id => @building %></td>'
-  end   
 end

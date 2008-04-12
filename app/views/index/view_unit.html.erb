@@ -1,8 +1,11 @@
 <div id="divide">
 	<div>
+		<% if @unit.name.nil? %>
+			<% else %>
 		<%= link_to "Edit Customer", :action => "edit_customer", :id => @unit %>
 		<%= link_to "Remove Customer", { :action => "remove_customer", :id => @unit, :user_id => @user.id}, :confirm => "This will erase all customer information for this unit. Are you sure you want to remove them?" %>
 		<%= link_to "Contract", {:action => "contract", :id => @unit }, :target => "_contract"%>
+		<% end %>
 	</div>
 </div>
 

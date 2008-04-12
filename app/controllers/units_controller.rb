@@ -26,7 +26,6 @@ before_filter :protect
   def edit
     @user = User.find_by_id(session[:user_id])
     @companies = Company.find(:all)
-    flash[:notice] = "Tst"    
   end
   
   protected
