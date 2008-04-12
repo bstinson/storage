@@ -1,0 +1,26 @@
+<table cellpadding="5">
+	<tr>
+		<td class="label">Name:</td>
+		<td><%= @previous_customer.name %></td>
+	</tr>
+
+	<%= if_empty("SSN", @previous_customer.ssn)%>
+
+	<tr>
+		<td  class="label">Address:</td>
+		<td><%= format_address(@previous_customer.address, @previous_customer.city,@previous_customer.state, @previous_customer.zip) %></td>
+	</tr>
+	
+	<tr>
+		<td class="label">Phone:</td>
+		<td><%= number_to_phone(@previous_customer.phone, :area_code => true) %></td>
+	</tr>
+
+	<%= if_empty("Work/Cell", @previous_customer.work_cell)%>
+	<%= if_empty("Email", @previous_customer.email)%>
+	<%= if_empty("(alt) Contact", @previous_customer.alt_contact) %>
+	<%= if_empty("Contact Phone", number_to_phone(@previous_customer.alt_phone, :area_code => true)) %>	
+	<%= if_empty("Auth. Users", @previous_customer.auth_users)%>
+	<%= if_empty("Code", @previous_customer.code)%>
+
+</table>

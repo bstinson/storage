@@ -1,0 +1,43 @@
+<div id="divide">
+
+</div>
+
+<div id="content">
+	<% if flash[:notice].nil? %>
+	<% else %>	
+		<div id="helper">
+			<%=	textilize(flash[:notice]) %>
+		</div>	
+	<% end %>
+	
+	<div id="note_section">
+		<h4>Notes</h4>
+
+		<% if @notes_count > 0 %>
+		<div id="notes">
+			<p>There are no previous notes.</p>
+			<% for note in @notes %>
+				<h5>
+					<%= format_date(note.created_at) -%> (<%= show_name_for_id(note.user_id) -%>)
+				</h5>
+				<%= textilize(note.note) %>
+			<% end %>
+		</div>	
+		<% else %>
+			<p>There are no previous notes.</p>
+		<% end %>
+	
+		
+	</div>
+		
+	<div id="info">
+		<%= render :partial => "previous_customer_info" %>
+	</div>
+	
+	<div style="clear:both;">
+		<%= form_tag("add_prev") %>
+			<%= submit_tag "Add Anyways", :class => "submit" %>
+		
+		<%= link_to "Cancel", :action => "index" %>
+	</div>		
+</div>
