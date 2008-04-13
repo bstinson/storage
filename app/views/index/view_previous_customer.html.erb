@@ -15,7 +15,6 @@
 
 		<% if @notes_count > 0 %>
 		<div id="notes">
-			<p>There are no previous notes.</p>
 			<% for note in @notes %>
 				<h5>
 					<%= format_date(note.created_at) -%> (<%= show_name_for_id(note.user_id) -%>)
@@ -35,9 +34,13 @@
 	</div>
 	
 	<div style="clear:both;">
-		<%= form_tag("add_prev") %>
-			<%= submit_tag "Add Anyways", :class => "submit" %>
-		
-		<%= link_to "Cancel", :action => "index" %>
+		<% form_tag({:action => "add_previous_customer"}, :method => "post") do %>
+			<%= hidden_field_tag :id, @previous_customer.id %>
+			<%= hidden_field_tag :unit_id, @unit.id %>
+			<%= hidden_field_tag :deposit, @deposit %>
+			<%= hidden_field_tag :monthly_price, @monthly_price %>
+			<%= submit_tag "Add Anyways", :class => "submit" %> |
+			<%= link_to "Cancel", :action => "index" %>
+		<% end %>	
 	</div>		
 </div>

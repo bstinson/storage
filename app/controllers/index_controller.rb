@@ -52,7 +52,7 @@ class IndexController < ApplicationController
     flash[:notice] = "Here is where you can add a customer to a unit."
     if request.post? and params[:unit]
       @test_unit = Unit.new(params[:unit])
-      @previous_customer =  Prevcustomer.find_by_ssn_and_dl(@test_unit.ssn, @test_unit.dl)
+      @previous_customer =  Prevcustomer.find_by_ssn_and_dl_and_phone(@test_unit.ssn, @test_unit.dl, @test_unit.phone)
       if @previous_customer.nil?
         if @unit.update_attributes(params[:unit])
           for email in @emails
@@ -62,7 +62,7 @@ class IndexController < ApplicationController
           redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
         end
       else
-        redirect_to :action => "view_previous_customer", :prev_id => @previous_customer, :unit_id => @unit
+        redirect_to :action => "view_previous_customer", :prev_id => @previous_customer, :unit_id => @unit, :monthly_price => @test_unit.monthly_price, :deposit => @test_unit.deposit
       end
     else
         @unit = Unit.find_by_id(params[:id])
@@ -198,10 +198,51 @@ class IndexController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @company_id = User.find_by_id(@user.company_id)
     @companies = Company.find(:all)
+    @unit = Unit.find_by_id(params[:unit_id])
+    @deposit = (params[:deposit])
+    @monthly_price = (params[:monthly_price])
     @previous_customer = Prevcustomer.find_by_id(params[:prev_id])
     @notes = Note.find_all_by_prevcustomer_id(@previous_customer.id, :order => "created_at DESC")
     @notes_count = Note.count(:conditions => "prevcustomer_id = " + @previous_customer.id.to_s )  
   end 
+  
+  def add_previous_customer
+    @prev_customer = Prevcustomer.find_by_id(params[:id])
+    @unit = Unit.find_by_id(params[:unit_id])
+    @deposit = (params[:deposit])
+    @monthly_price = (params[:monthly_price])
+    @notes = Note.find_all_by_prevcustomer_id(@prev_customer.id, :order => "created_at DESC")
+    if request.post?
+      if @unit.update_attributes( :status => "Occupied",
+                                  :name => @prev_customer.name,
+                                  :ssn => @prev_customer.ssn,
+                                  :dl => @prev_customer.dl,
+                                  :address => @prev_customer.address,
+                                  :city => @prev_customer.city,
+                                  :state => @prev_customer.state,
+                                  :zip => @prev_customer.zip,
+                                  :phone => @prev_customer.phone,
+                                  :work_cell => @prev_customer.work_cell,
+                                  :email => @prev_customer.email,
+                                  :alt_contact => @prev_customer.alt_contact,
+                                  :alt_phone => @prev_customer.alt_phone,
+                                  :auth_users => @prev_customer.auth_users,
+                                  :code => @prev_customer.code,
+                                  :monthly_price => @monthly_price,
+                                  :deposit => @deposit) 
+          
+          if @notes != 0
+            for note in @notes
+              note.update_attributes(:prevcustomer_id => nil,
+                                     :unit_id => @unit.id)
+            end
+          end  
+        @prev_customer.destroy                          
+        flash[:notice] = "Customer Added!"
+        redirect_to :action => "view_unit", :unit_num => @unit.unit_num, :building_id => @unit.building_id
+      end
+    end  
+  end
   
   protected
 
