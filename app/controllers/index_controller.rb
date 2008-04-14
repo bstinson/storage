@@ -93,10 +93,14 @@ class IndexController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @companies = Company.find(:all)
     @company_id = User.find_by_id(@user.company_id)
-    @unit = Unit.find(params[:id])    
+    @unit = Unit.find(params[:id])
+    @emails = User.find_all_by_company_id(@user.company_id)        
     flash[:notice] = "Here is where you can change the status of a unit."
     if request.post? and params[:unit]
-        if @unit.update_attributes(params[:unit])  
+        if @unit.update_attributes(params[:unit])
+          for email in @emails      
+            StatusChange.deliver_status(@unit, @user, email.email)
+          end  
           flash[:notice] = "Unit Status has been Changed!"
           if @unit.name.nil?
             redirect_to :action => "update_building", :building_id => @unit.building_id
