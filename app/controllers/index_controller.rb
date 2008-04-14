@@ -94,7 +94,7 @@ class IndexController < ApplicationController
     @companies = Company.find(:all)
     @company_id = User.find_by_id(@user.company_id)
     @unit = Unit.find(params[:id])
-    @emails = User.find_all_by_company_id(@user.company_id)        
+    @emails = User.find_all_by_company_id(@unit.company_id)        
     flash[:notice] = "Here is where you can change the status of a unit."
     if request.post? and params[:unit]
         if @unit.update_attributes(params[:unit])
