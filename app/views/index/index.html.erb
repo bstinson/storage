@@ -1,6 +1,7 @@
 <div id="divide">
 	<div>
 		<% if @company_id.id == @user.company_id %>
+			<%= mail_to "brads@usdol.net", "Support", :encode => "javascript"%>
 			<%= link_to "Report", {:action => "customer_report", :id => @company_id}, :popup => 'true' %>	
 		<% end %>
 	</div>	
