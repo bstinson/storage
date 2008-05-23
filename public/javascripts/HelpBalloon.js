@@ -954,7 +954,7 @@ HelpBalloon.Options.prototype = {
 	 * Default is true.
 	 * @var {Boolean}
 	 */
-	hideUnderElementsInIE: true,
+	hideUnderElementsInIE: false,
 	
 	/**
 	 * Default Balloon styling
