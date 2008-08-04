@@ -6,4 +6,5 @@
     	<tr><td><%= unit.name %></td> <td><%= number_to_currency( unit.monthly_price) %></td></tr>
   <% end %>  
 <% end %>
+<%= @units.sum('monthly_price') %>
 </table>
