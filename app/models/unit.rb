@@ -3,7 +3,7 @@ class Unit < ActiveRecord::Base
   has_many :notes
   
   # Allowed sizes for data fields
-  UNIT_NUM_MAX_LENGTH   = 3
+  UNIT_NUM_MAX_LENGTH   = 4
   NAME_MIN_LENGTH       = 3
   NAME_MAX_LENGTH       = 35
   ADDRESS_MIN_LENGTH    = 10
