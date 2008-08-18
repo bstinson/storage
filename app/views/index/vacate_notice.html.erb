@@ -5,6 +5,8 @@
 	</div>
 </div>
 
-<p>Date</p>	
+	<h2 style="text-align:center;"><%= @company.name %><br />
+	<span style="font-size:smaller;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%><br /><%= @company.phone %></span></h2>
+<p>Date: <%= Date.today %></p>	
 
 </div>
