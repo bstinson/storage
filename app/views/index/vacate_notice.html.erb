@@ -9,7 +9,7 @@
 	<span style="font-size:smaller;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%><br /><%= @company.phone %></span></h2>
 <p>Date: <%= Date.today %></p>	
 
-<p>Customer Name: <%= unit.name.capitalize %>
+<p>Customer Name: <%= @unit.name.capitalize %>
 
 <p>Address: <br /> <%= format_address(@unit.address, @unit.city, @unit.state, @unit.zip)%></p>
 
