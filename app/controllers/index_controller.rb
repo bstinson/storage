@@ -115,6 +115,8 @@ class IndexController < ApplicationController
   
   def vacate_notice
     @unit = Unit.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
+    render(:layout => "layouts/vacate_notice")
   end
   
   def remove_customer

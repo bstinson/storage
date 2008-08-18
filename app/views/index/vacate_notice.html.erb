@@ -1,7 +1,10 @@
+<div id="content">
 <div class="no_print">
-	<div id="flash">
-		<p>Print this notice to give to the customer to sign to verify that they are moving out. Then click <%= link_to "continue", :action => "remove customer", :id => @unit.id %> to finish removing them from the database.</p>
+	<div id="helper">
+		<p>Print this notice to give to the customer to sign to verify that they are moving out. Then click 		<%= link_to "continue", { :action => "remove_customer", :id => @unit, :user_id => @user.id}, :confirm => "This will erase all customer information for this unit. Are you sure you want to remove them?" %> to finish removing them from the database.</p>
 	</div>
 </div>
 
 <p>Date</p>	
+
+</div>
