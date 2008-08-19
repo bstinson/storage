@@ -19,7 +19,7 @@ class Unit < ActiveRecord::Base
   EMAIL_MAX_LENGTH      = 50
   PRICE_MAX_LENGTH      = 10
   DEPOSIT_MAX_LENGTH    = 10
-  CODE_LENGTH           = 4
+  CODE_LENGTH           = 6
 
   # Text Box sizes for fields in form.
   MEASURED_SIZE       = 3
