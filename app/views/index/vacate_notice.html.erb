@@ -7,18 +7,28 @@
 
 	<h2 style="text-align:center;"><%= @company.name %><br />
 	<span style="font-size:smaller;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%><br /><%= @company.phone %></span></h2>
-<p>Date: <%= Date.today %></p>	
+<h3><b>Date:</b> <%= Date.today %></h3>	
+<table>
+	<tr>
+		<td class="label">Customer Name:</td>
+		<td><%= @unit.name.capitalize %></td>
+	</tr>
 
-<p>Customer Name: <%= @unit.name.capitalize %>
-
-<p>Address: <br /> <%= format_address(@unit.address, @unit.city, @unit.state, @unit.zip)%></p>
-
-<p>Telephone #: <%= @unit.phone %><p>
+	<tr>
+		<td class="label">Address:</td>
+		<td> <%= format_address(@unit.address, @unit.city, @unit.state, @unit.zip)%></td>
+	</tr>
 	
+	<tr>
+		<td class="label">Telephone #:</td>
+ 		<td><%= @unit.phone %></td>
+	</tr>
+</table>	
+
 <p>Unit #</b><%= @unit.unit_num %></b> has been vacated as of this date. The security deposit in the amount of $ _______________ has ben refunded to to the above customer. By signing below, all parties agree that all accounts are settled in regards to this unit.</p>
 
-
-<p>Customer _________________________________________________</p>
+<hr />
+<h3>Customer</h3>
 
 <hr />
 <h3><%= @company.name %></h3>		
