@@ -7,7 +7,11 @@
 
 	<h2 style="text-align:center;"><%= @company.name %><br />
 	<span style="font-size:smaller;"><%= format_address(@company.address, @company.city, @company.state, @company.zip)%><br /><%= @company.phone %></span></h2>
-<pstyle="font-size:14px;"><b>Date:</b> <%= format_date(Date.today) %></p>	
+<p style="font-size:14px;"><b>Date:</b> <%= format_date(Date.today) %></p>	
+
+<br />
+<br />
+
 <table style="font-size:14px;">
 	<tr>
 		<td class="label"><b>Customer Name:</b></td>
