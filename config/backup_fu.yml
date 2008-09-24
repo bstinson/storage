@@ -1,0 +1,6 @@
+# The app_name is used as the backup filename prefix
+app_name: storage
+# You must create the s3_bucket specified below via an external tool like S3 Browser, etc
+s3_bucket: websitesbackup
+aws_access_key_id: 0X3V3Q31HE59AWH6CCG2
+aws_secret_access_key: LFCTAZcHGdw/MHXl6U8abgx1M5Vvyv2bAvDW+02C
